@@ -1,0 +1,39 @@
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace Core.Attack
+{
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class AttackArea : MonoBehaviour
+    {
+        List<Collider2D> _inAttackRange = new List<Collider2D>();
+
+        public void OnAttack(int damageValue)
+        {
+            // Temp list to prevent Errors of moditified collection during iteration in foreach
+            List<Collider2D> temp_InRange = new List<Collider2D>(_inAttackRange);
+
+            foreach (Collider2D item in temp_InRange)
+            {
+                item.GetComponent<Hitable>().OnHit(damageValue);
+            }
+        }
+
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.GetComponent<Hitable>())
+            {
+                _inAttackRange.Add(collision);
+            }
+        }
+
+        protected virtual void OnTriggerExit2D(Collider2D collision)
+        {
+            if (_inAttackRange.Contains(collision))
+            {
+                _inAttackRange.Remove(collision);
+            }
+        }
+    }
+}
+

@@ -1,5 +1,6 @@
 ﻿using Core.Attack;
 using Player.GroundScan;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,6 +10,8 @@ namespace Player
     [RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
     public class PlayerEntity : MonoBehaviour
     {
+        static Transform s_PlayerTransform;
+
         [SerializeField] int _hitpoints; 
 
         [SerializeField] float _jumpForce = 0.0f;
@@ -30,11 +33,8 @@ namespace Player
         Vector3 _initialScale;
 
 
-        Vector3 DEBUG_VELOCITY;
-
         public UnityEvent OnPlayerDead { get => _onPlayerDead; }
         public int DamageValue { get => _damageValue; }
-
 
         public int Hitpoints
         {
@@ -49,10 +49,14 @@ namespace Player
             }
         }
 
+        public static Transform TransformReference { get => s_PlayerTransform ;}
+
 
         #region UnityMessages
         private void Awake()
         {
+            CreateSingleton();
+
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _groundScanner = transform.GetComponentInChildren<PlayerGroundScan>();
             _attackArea = transform.GetComponentInChildren<AttackArea>();
@@ -78,6 +82,32 @@ namespace Player
             ApplyAnimations();
         }
 
+        private void OnDestroy()
+        {
+            DestroySingleton();
+        }
+        #endregion
+
+        #region SingletonHandling
+        private void CreateSingleton()
+        {
+            if (!s_PlayerTransform)
+            {
+                s_PlayerTransform = this.transform;
+            }
+            else
+            {
+                this.gameObject.SetActive(false);
+            }
+        }
+
+        private void DestroySingleton()
+        {
+            if (s_PlayerTransform == this.transform)
+            {
+                s_PlayerTransform = null;
+            }
+        }
         #endregion
 
         #region DeathHandling

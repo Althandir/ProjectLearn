@@ -6,9 +6,19 @@
 public class FPSDisplay : MonoBehaviour
 {
 	float deltaTime = 0.0f;
+	[SerializeField] int targetFPS = 30;
 
-	void Update()
+    void Update()
 	{
+        if (targetFPS != 0)
+        {
+			Application.targetFrameRate = targetFPS;
+		}
+        else if (targetFPS < 15)
+        {
+			Application.targetFrameRate = 60;
+        }
+
 		deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
 	}
 

@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5039049363278546951}
   - component: {fileID: 5039049363278546950}
+  - component: {fileID: 6704528452698183792}
   m_Layer: 0
   m_Name: Freeform Light
   m_TagString: Untagged
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 4
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffSize: 1.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.25, y: -0.55, z: 0}
@@ -171,3 +172,15 @@ MonoBehaviour:
   - {x: 0, y: 0.3, z: 0}
   - {x: -0.15, y: 0.25, z: 0}
   - {x: -0.25, y: 0.1, z: 0}
+--- !u!114 &6704528452698183792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039049363278546948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183d3434df19e024b8daf21ae7a7dfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

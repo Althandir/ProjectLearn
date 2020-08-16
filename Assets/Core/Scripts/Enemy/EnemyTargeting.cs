@@ -63,7 +63,7 @@ namespace Enemy.AI.Targeting
 
         private void TargetGate()
         {
-            if (!(_targetTransform == Core.TargetGate.TargetGate.Reference.transform))
+            if (_targetTransform != Core.TargetGate.TargetGate.Reference.transform)
             {
                 _targetTransform = Core.TargetGate.TargetGate.Reference.transform;
             }
@@ -71,7 +71,7 @@ namespace Enemy.AI.Targeting
 
         private void TargetPlayer()
         {
-            if (!(_targetTransform == Player.PlayerEntity.TransformReference))
+            if (_targetTransform != Player.PlayerEntity.TransformReference)
             {
                 _targetTransform = Player.PlayerEntity.TransformReference;
             }

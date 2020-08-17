@@ -4812,7 +4812,7 @@ MonoBehaviour:
   _spawnPostitions:
   - {fileID: 1937605356}
   _maxCounter: 4
-  _spawnDelayInSec: 2
+  _spawnDelayInSec: 5
 --- !u!1001 &790261818
 PrefabInstance:
   m_ObjectHideFlags: 0

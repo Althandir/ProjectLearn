@@ -2,6 +2,7 @@
 
 namespace Core.TargetGate
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class TargetGate : MonoBehaviour
     {
         static TargetGate s_TargetGate;
@@ -16,6 +17,25 @@ namespace Core.TargetGate
         private void OnDestroy()
         {
             DestroySingleton();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            CheckForEnemy(collision);
+        }
+
+        void CheckForEnemy(Collider2D collider)
+        {
+            if (collider.GetComponent<Enemy.EnemyEntity>())
+            {
+                collider.gameObject.SetActive(false);
+                EnemyEnteredGate();
+            }
+        }
+
+        void EnemyEnteredGate()
+        {
+            Debug.Log("Enemy entered the Gate!");
         }
 
         #region SingletonHandling

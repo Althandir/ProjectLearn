@@ -49,7 +49,7 @@ namespace Player
             }
         }
 
-        public static Transform TransformReference { get => s_PlayerTransform ;}
+        public static Transform TransformStaticReference { get => s_PlayerTransform ;}
 
 
         #region UnityMessages

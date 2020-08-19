@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
-namespace Core.TargetGate
+namespace Core.City
 {
     [RequireComponent(typeof(BoxCollider2D))]
-    public class TargetGate : MonoBehaviour
+    public class CityGate : MonoBehaviour
     {
-        static TargetGate s_TargetGate;
+        static CityGate s_CityGate;
+        public static CityGate StaticReference { get => s_CityGate; }
 
-        public static TargetGate Reference { get => s_TargetGate; }
+        UnityEvent _enemyEnteredGate = new UnityEvent();
+        public UnityEvent EnemyEnteredGateEvent { get => _enemyEnteredGate;}
 
+        
+
+        #region Unity Messages
         private void Awake()
         {
             CreateSingleton();
@@ -24,26 +30,38 @@ namespace Core.TargetGate
             CheckForEnemy(collision);
         }
 
+        #endregion
+
+        #region EnemyEnteredGateHandling
         void CheckForEnemy(Collider2D collider)
         {
             if (collider.GetComponent<Enemy.EnemyEntity>())
             {
-                collider.gameObject.SetActive(false);
+                DisableEnemyEntity(collider.gameObject);
                 EnemyEnteredGate();
             }
+        }
+
+        void DisableEnemyEntity(GameObject enemy)
+        {
+            enemy.SetActive(false);
         }
 
         void EnemyEnteredGate()
         {
             Debug.Log("Enemy entered the Gate!");
+            _enemyEnteredGate.Invoke();
         }
+
+        
+        #endregion
 
         #region SingletonHandling
         private void CreateSingleton()
         {
-            if (!s_TargetGate)
+            if (!s_CityGate)
             {
-                s_TargetGate = this;
+                s_CityGate = this;
             }
             else
             {
@@ -53,9 +71,9 @@ namespace Core.TargetGate
 
         private void DestroySingleton()
         {
-            if (s_TargetGate == this.transform)
+            if (s_CityGate == this)
             {
-                s_TargetGate = null;
+                s_CityGate = null;
             }
         }
         #endregion

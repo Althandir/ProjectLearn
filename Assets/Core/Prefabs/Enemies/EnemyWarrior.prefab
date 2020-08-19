@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3439513243180778078}
   - component: {fileID: 3439513243180778073}
   - component: {fileID: 3439513243180778072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3439513243464933103}
   - component: {fileID: 3439513243464933089}
   - component: {fileID: 3439513243464933102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyWarrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 8324975924045535526}
   - component: {fileID: 2221612371472368639}
   - component: {fileID: 936383022784445569}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrackingArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

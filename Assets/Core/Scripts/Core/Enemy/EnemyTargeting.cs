@@ -63,17 +63,17 @@ namespace Enemy.AI.Targeting
 
         private void TargetGate()
         {
-            if (_targetTransform != Core.TargetGate.TargetGate.Reference.transform)
+            if (_targetTransform != Core.City.CityGate.StaticReference.transform)
             {
-                _targetTransform = Core.TargetGate.TargetGate.Reference.transform;
+                _targetTransform = Core.City.CityGate.StaticReference.transform;
             }
         }
 
         private void TargetPlayer()
         {
-            if (_targetTransform != Player.PlayerEntity.TransformReference)
+            if (_targetTransform != Player.PlayerEntity.TransformStaticReference)
             {
-                _targetTransform = Player.PlayerEntity.TransformReference;
+                _targetTransform = Player.PlayerEntity.TransformStaticReference;
             }
         }
 

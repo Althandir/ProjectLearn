@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2548771445406103083}
   - component: {fileID: 3200845304558907267}
   m_Layer: 0
-  m_Name: TargetGate
+  m_Name: CityGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5039049363278546951}
   - component: {fileID: 5039049363278546950}
-  - component: {fileID: 6704528452698183792}
+  - component: {fileID: 3563794363763820826}
   m_Layer: 0
   m_Name: Freeform Light
   m_TagString: Untagged
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 0.7229444, b: 0, a: 1}
   m_Intensity: 2
-  m_LightVolumeOpacity: 0.3
+  m_LightVolumeOpacity: 0.4
   m_ApplyToSortingLayers: 1d0d44eb95eaf0e945d7d27fd526fe27
   m_LightCookieSprite: {fileID: 21300008, guid: ae3918a914038694d852d0bb81f62473,
     type: 3}
@@ -199,7 +199,7 @@ MonoBehaviour:
   - {x: 0, y: 0.3, z: 0}
   - {x: -0.15, y: 0.25, z: 0}
   - {x: -0.25, y: 0.1, z: 0}
---- !u!114 &6704528452698183792
+--- !u!114 &3563794363763820826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5039049363278546948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183d3434df19e024b8daf21ae7a7dfed, type: 3}
+  m_Script: {fileID: 11500000, guid: def60f452f3b28242ae7aaaafa2fa578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onEnemyEnteredColorChangeDuration: 2

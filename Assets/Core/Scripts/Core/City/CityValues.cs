@@ -11,8 +11,12 @@ namespace Core.City
         [SerializeField] int _cityLife = 3;
 
         UnityEvent _cityDestroyedEvent = new UnityEvent();
+        UnityEventInt _cityLifeChangedEvent = new UnityEventInt();
 
         public UnityEvent CityDestroyedEvent { get => _cityDestroyedEvent; }
+        public UnityEventInt CityLifeChangedEvent { get => _cityLifeChangedEvent; }
+        public static CityValues StaticReference { get => s_CityValues; }
+
 
         #region Unity Messages
         private void Awake()
@@ -63,6 +67,7 @@ namespace Core.City
         void DecreaseCityLife()
         {
             _cityLife -= 1;
+            _cityLifeChangedEvent.Invoke(_cityLife);
             CheckCityLife();
         }
 

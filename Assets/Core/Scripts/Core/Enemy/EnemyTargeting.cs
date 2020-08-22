@@ -71,9 +71,9 @@ namespace Enemy.AI.Targeting
 
         private void TargetPlayer()
         {
-            if (_targetTransform != Player.PlayerEntity.TransformStaticReference)
+            if (_targetTransform != Player.PlayerEntity.StaticReference.transform)
             {
-                _targetTransform = Player.PlayerEntity.TransformStaticReference;
+                _targetTransform = Player.PlayerEntity.StaticReference.transform;
             }
         }
 

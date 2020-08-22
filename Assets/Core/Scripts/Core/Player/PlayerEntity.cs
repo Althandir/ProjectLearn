@@ -10,8 +10,9 @@ namespace Player
     [RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
     public class PlayerEntity : MonoBehaviour
     {
-        static Transform s_PlayerTransform;
+        static PlayerEntity s_PlayerEntity;
 
+        [SerializeField] int _maxHitpoints = 100;
         [SerializeField] int _hitpoints; 
 
         [SerializeField] float _jumpForce = 0.0f;
@@ -25,7 +26,10 @@ namespace Player
         bool _jumpPressed;
         Animator _animator;
 
+
+        UnityEventInt _onPlayerLifeChanged = new UnityEventInt();
         UnityEvent _onPlayerDead = new UnityEvent();
+        UnityEvent _onPlayerRespawn = new UnityEvent();
 
         PlayerGroundScan _groundScanner;
 
@@ -42,6 +46,7 @@ namespace Player
             set
             {
                 _hitpoints += value;
+                _onPlayerLifeChanged.Invoke(_hitpoints);
                 if (_hitpoints <= 0)
                 {
                     _onPlayerDead.Invoke();
@@ -49,7 +54,10 @@ namespace Player
             }
         }
 
-        public static Transform TransformStaticReference { get => s_PlayerTransform ;}
+        public static PlayerEntity StaticReference { get => s_PlayerEntity ;}
+        public UnityEventInt OnPlayerLifeChanged { get => _onPlayerLifeChanged; }
+        public int MaxHitpoints { get => _maxHitpoints; }
+        public UnityEvent OnPlayerRespawn { get => _onPlayerRespawn; }
 
 
         #region UnityMessages
@@ -62,14 +70,14 @@ namespace Player
             _attackArea = transform.GetComponentInChildren<AttackArea>();
             _animator = GetComponent<Animator>();
             _initialScale = transform.localScale;
+            _onPlayerDead.AddListener(PlayerDead);
         }
 
         private void Start()
         {
-            _onPlayerDead.AddListener(PlayerDead);
+            _onPlayerLifeChanged.Invoke(_hitpoints);
         }
 
-        // Update is called once per frame
         void Update()
         {
             ReadInput();
@@ -91,9 +99,9 @@ namespace Player
         #region SingletonHandling
         private void CreateSingleton()
         {
-            if (!s_PlayerTransform)
+            if (!s_PlayerEntity)
             {
-                s_PlayerTransform = this.transform;
+                s_PlayerEntity = this;
             }
             else
             {
@@ -103,9 +111,9 @@ namespace Player
 
         private void DestroySingleton()
         {
-            if (s_PlayerTransform == this.transform)
+            if (s_PlayerEntity == this.transform)
             {
-                s_PlayerTransform = null;
+                s_PlayerEntity = null;
             }
         }
         #endregion
@@ -118,6 +126,16 @@ namespace Player
             this.enabled = false;
             _rigidbody2D.velocity = Vector2.zero;
             _rigidbody2D.gravityScale = 0;
+        }
+        #endregion
+
+        #region RespawnHandling
+        public void Respawn()
+        {
+            _onPlayerRespawn.Invoke();
+            _animator.SetBool("isDead", false);
+            Hitpoints = _maxHitpoints;
+            _rigidbody2D.gravityScale = 1;
         }
         #endregion
 

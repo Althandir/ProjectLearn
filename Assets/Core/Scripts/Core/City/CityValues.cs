@@ -7,8 +7,9 @@ namespace Core.City
     {
         static CityValues s_CityValues;
 
-
-        [SerializeField] int _cityLife = 3;
+        [SerializeField] int _maxCityLife = 20;
+        
+        int _cityLife;
 
         UnityEvent _cityDestroyedEvent = new UnityEvent();
         UnityEventInt _cityLifeChangedEvent = new UnityEventInt();
@@ -16,19 +17,26 @@ namespace Core.City
         public UnityEvent CityDestroyedEvent { get => _cityDestroyedEvent; }
         public UnityEventInt CityLifeChangedEvent { get => _cityLifeChangedEvent; }
         public static CityValues StaticReference { get => s_CityValues; }
+        public int MaxCityLife { get => _maxCityLife; }
 
 
         #region Unity Messages
         private void Awake()
         {
             CreateSingleton();
+
+            _cityLife = _maxCityLife;
         }
 
-        private void Start()
+        private void OnEnable()
         {
             CityGate.StaticReference.EnemyEnteredGateEvent.AddListener(OnEnemyEntered);
         }
 
+        private void Start()
+        {
+            _cityLifeChangedEvent.Invoke(_cityLife);
+        }
 
         private void OnDestroy()
         {

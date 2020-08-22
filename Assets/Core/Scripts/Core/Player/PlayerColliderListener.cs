@@ -8,6 +8,12 @@ namespace Player.ColliderListener
         private void Awake()
         {
             transform.parent.GetComponent<PlayerEntity>().OnPlayerDead.AddListener(DisableCollider);
+            transform.parent.GetComponent<PlayerEntity>().OnPlayerRespawn.AddListener(EnableCollider);
+        }
+
+        void EnableCollider()
+        {
+            GetComponent<BoxCollider2D>().enabled = true;
         }
 
         void DisableCollider()

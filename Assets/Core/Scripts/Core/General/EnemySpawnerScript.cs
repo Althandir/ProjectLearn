@@ -1,12 +1,11 @@
-﻿using Enemy;
-using System;
+﻿using Enemy.AI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core.Spawner
+namespace Core.EnemySpawner
 {
-    public class SpawnerScript : MonoBehaviour
+    public class EnemySpawnerScript : MonoBehaviour
     {
         [SerializeField] GameObject _EnemyPrefab;
         [SerializeField] List<Transform> _spawnPostitions = new List<Transform>();
@@ -83,19 +82,26 @@ namespace Core.Spawner
                     yield return new WaitForSecondsRealtime(_spawnDelayInSec);
                     MoveEnemyToSpawnPosPosition(enemyEntity);
                     enemyEntity.gameObject.SetActive(true);
+                    enemyEntity.GetComponent<EnemyAI>().enabled = true;
                     _currentCounter += 1;
                 }
             }
 
             _currentCounter = 0;
             _activeSpawnerRoutine = false;
+
+            IncreaseMaxCounter();
         }
 
         void MoveEnemyToSpawnPosPosition(Transform enemyEntity)
         {
-            enemyEntity.position = _spawnPostitions[UnityEngine.Random.Range(0, _spawnPostitions.Count - 1)].position;
+            enemyEntity.position = _spawnPostitions[Random.Range(0, _spawnPostitions.Count - 1)].position;
         }
 
+        virtual protected void IncreaseMaxCounter()
+        {
+            _maxCounter *= 2;
+        }
     }
 }
 

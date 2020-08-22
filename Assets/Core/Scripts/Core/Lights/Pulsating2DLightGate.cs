@@ -18,7 +18,7 @@ namespace Lights
             _initColor = _light.color;
         }
 
-        void Start()
+        private void Start()
         {
             CityGate.StaticReference.EnemyEnteredGateEvent.AddListener(OnEnemyEnteredGate);
         }

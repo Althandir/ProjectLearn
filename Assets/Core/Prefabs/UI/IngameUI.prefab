@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 6230953331051911883}
   - component: {fileID: 4811822478043395673}
   - component: {fileID: 2789024530422802839}
+  - component: {fileID: 806965357534304919}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -370,6 +371,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3429785099984635539}
   m_CullTransparentMesh: 0
+--- !u!114 &806965357534304919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3429785099984635539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec01fa85d34f35c40bdaf8869fa8ea5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5103953828355708291
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,8 +678,8 @@ RectTransform:
   m_Father: {fileID: 5103953828355708303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7, y: 0.9}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.675, y: 0.875}
+  m_AnchorMax: {x: 0.975, y: 0.975}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -850,8 +863,8 @@ RectTransform:
   m_Father: {fileID: 5103953828355708303}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.9}
-  m_AnchorMax: {x: 0.3, y: 1}
+  m_AnchorMin: {x: 0.025, y: 0.875}
+  m_AnchorMax: {x: 0.325, y: 0.975}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -902,6 +915,7 @@ GameObject:
   - component: {fileID: 5103953830161752010}
   - component: {fileID: 5103953830161752020}
   - component: {fileID: 5103953830161752021}
+  - component: {fileID: 3892313446956926525}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -988,6 +1002,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5103953830161752011}
   m_CullTransparentMesh: 0
+--- !u!114 &3892313446956926525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103953830161752011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8ef0aeda3350945909fee4f5e35172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8049660188876563995
 GameObject:
   m_ObjectHideFlags: 0

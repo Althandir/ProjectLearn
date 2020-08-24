@@ -11,6 +11,7 @@ namespace Core.EnemySpawner
         [SerializeField] List<Transform> _spawnPostitions = new List<Transform>();
         [SerializeField] int _maxCounter = 0;
         [SerializeField] float _spawnDelayInSec = 1.0f;
+        [SerializeField] protected int _counterMultiplicator = 2;
 
         int _currentCounter = 0;
         bool _activeSpawnerRoutine;
@@ -36,7 +37,7 @@ namespace Core.EnemySpawner
         }
 
         [ContextMenu("DEBUG_StartSpawner")]
-        void StartSpawner()
+        public void StartSpawner()
         {
             if (!_activeSpawnerRoutine && NoActiveChildren())
             {
@@ -100,7 +101,7 @@ namespace Core.EnemySpawner
 
         virtual protected void IncreaseMaxCounter()
         {
-            _maxCounter *= 2;
+            _maxCounter *= _counterMultiplicator;
         }
     }
 }

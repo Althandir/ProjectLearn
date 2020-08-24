@@ -33,11 +33,6 @@ namespace Core.City
             CityGate.StaticReference.EnemyEnteredGateEvent.AddListener(OnEnemyEntered);
         }
 
-        private void Start()
-        {
-            _cityLifeChangedEvent.Invoke(_cityLife);
-        }
-
         private void OnDestroy()
         {
             DestroySingleton();

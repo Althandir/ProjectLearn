@@ -9,6 +9,8 @@ namespace GameUI.Sliders
             PlayerEntity.StaticReference.OnPlayerLifeChanged.AddListener(OnLifeChanged);
 
             _slider.maxValue = PlayerEntity.StaticReference.MaxHitpoints;
+            // Should be done somehow better :/
+            _slider.value = PlayerEntity.StaticReference.MaxHitpoints;
         }
     }
 }

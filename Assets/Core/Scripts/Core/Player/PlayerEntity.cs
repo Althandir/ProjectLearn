@@ -73,11 +73,6 @@ namespace Player
             _onPlayerDead.AddListener(PlayerDead);
         }
 
-        private void Start()
-        {
-            _onPlayerLifeChanged.Invoke(_hitpoints);
-        }
-
         void Update()
         {
             ReadInput();

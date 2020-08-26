@@ -34,8 +34,8 @@ namespace Player.Respawner
             }
             
             PlayerEntity.StaticReference.transform.position = _spawnPositions[UnityEngine.Random.Range(0,_spawnPositions.Count-1)].position;
-            PlayerEntity.StaticReference.enabled = true;
             PlayerEntity.StaticReference.Respawn();
+            PlayerEntity.StaticReference.enabled = true;
 
             counter = 0.0f;
             _isRespawning = false;

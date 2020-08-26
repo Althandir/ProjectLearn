@@ -28,7 +28,7 @@ namespace Core.City
             _cityLife = _maxCityLife;
         }
 
-        private void OnEnable()
+        private void Start()
         {
             CityGate.StaticReference.EnemyEnteredGateEvent.AddListener(OnEnemyEntered);
         }

@@ -6193,6 +6193,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 508451723}
     m_Modifications:
+    - target: {fileID: 3963886310245590144, guid: eecf08a5586f2f2459e9cf80263b1b9b,
+        type: 3}
+      propertyPath: _movingAudioVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963886310245590144, guid: eecf08a5586f2f2459e9cf80263b1b9b,
+        type: 3}
+      propertyPath: _attackAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 52fa067c25c5c401b811eb86d142287e, type: 3}
+    - target: {fileID: 3963886310245590144, guid: eecf08a5586f2f2459e9cf80263b1b9b,
+        type: 3}
+      propertyPath: _attackAudioVolume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4233209815850035833, guid: eecf08a5586f2f2459e9cf80263b1b9b,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Core.EnemySpawner
 {
-    public class EnemySpawnerScript : MonoBehaviour
+    public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] GameObject _EnemyPrefab;
         [SerializeField] List<Transform> _spawnPostitions = new List<Transform>();
@@ -36,6 +36,9 @@ namespace Core.EnemySpawner
             CheckForPrerequisites();
         }
 
+        /// <summary>
+        /// Starts the Spawner, if the Routine is not already running and there are no active Childs
+        /// </summary>
         [ContextMenu("DEBUG_StartSpawner")]
         public void StartSpawner()
         {
@@ -50,7 +53,11 @@ namespace Core.EnemySpawner
             }
         }
 
-        private bool NoActiveChildren()
+        /// <summary>
+        /// Checks if the spawner has any active Enemies.
+        /// </summary>
+        /// <returns>False when any child is active, True when every child is inactive</returns>
+        public bool NoActiveChildren()
         {
             foreach (Transform child in transform)
             {

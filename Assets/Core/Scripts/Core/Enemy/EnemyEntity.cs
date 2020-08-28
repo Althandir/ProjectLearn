@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿using Targetable;
 using UnityEngine;
-
 
 namespace Enemy
 {

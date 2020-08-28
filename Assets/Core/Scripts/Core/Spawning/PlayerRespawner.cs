@@ -8,7 +8,7 @@ namespace Player.Respawner
     {
         [SerializeField] List<Transform> _spawnPositions = new List<Transform>();
         [SerializeField] float _respawnDelay = 3.0f;
-        [SerializeField] float counter = 0.0f;
+        [SerializeField] float _timeCounter = 0.0f;
         bool _isRespawning;
         
         private void Start()
@@ -27,9 +27,9 @@ namespace Player.Respawner
 
         private IEnumerator HandlePlayerDeathRoutine()
         {
-            while (counter < _respawnDelay)
+            while (_timeCounter < _respawnDelay)
             {
-                counter += Time.fixedDeltaTime;
+                _timeCounter += Time.fixedDeltaTime;
                 yield return new WaitForFixedUpdate();
             }
             
@@ -37,7 +37,7 @@ namespace Player.Respawner
             PlayerEntity.StaticReference.Respawn();
             PlayerEntity.StaticReference.enabled = true;
 
-            counter = 0.0f;
+            _timeCounter = 0.0f;
             _isRespawning = false;
         }
     }

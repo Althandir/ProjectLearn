@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 
-public class HitableObject : Hitable
+namespace Targetable
 {
 
-    public override void OnHit(int damageValue)
+
+    public class HitableObject : Hitable
     {
-        Debug.LogWarning("Object has been hit.");
+
+        public override void OnHit(int damageValue)
+        {
+            Debug.LogWarning("Object has been hit.");
+        }
     }
+
 }

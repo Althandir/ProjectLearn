@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Targetable;
 
 namespace Enemy.AI.Targeting
 {

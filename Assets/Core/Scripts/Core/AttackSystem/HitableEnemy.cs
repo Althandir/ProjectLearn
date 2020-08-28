@@ -1,18 +1,30 @@
 ﻿using Enemy;
 using UnityEngine;
 
-public class HitableEnemy : Hitable
+namespace Targetable
 {
-    EnemyEntity _entity;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class HitableEnemy : Hitable
     {
-        _entity = GetComponent<EnemyEntity>();
-    }
+        EnemyEntity _entity;
+        Rigidbody2D _rb2D;
 
-    override public void OnHit(int damageValue)
-    {
-        _entity.Hitpoints =- damageValue;
-    }
+        private void Awake()
+        {
+            _entity = GetComponent<EnemyEntity>();
+            _rb2D = GetComponent<Rigidbody2D>();
+        }
 
+        override public void OnHit(int damageValue)
+        {
+            _entity.Hitpoints = -damageValue;
+        }
+
+        public override void OnHit(int damageValue, Vector2 pushDirection)
+        {
+            base.OnHit(damageValue, pushDirection);
+            _entity.Hitpoints = -damageValue;
+            _rb2D.AddForce(pushDirection, ForceMode2D.Force);
+        }
+    }
 }

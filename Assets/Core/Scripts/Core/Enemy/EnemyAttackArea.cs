@@ -1,6 +1,7 @@
 ﻿using Core.Attack;
 using UnityEngine;
 using UnityEngine.Events;
+using Targetable;
 
 namespace Enemy.Attack
 {

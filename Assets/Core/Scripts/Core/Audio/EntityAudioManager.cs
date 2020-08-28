@@ -11,7 +11,8 @@ namespace Core.Audio
         [SerializeField] AudioClip _attackAudio;
         [SerializeField] [Range(0.1f, 1)] float _attackAudioVolume;
 
-
+        [SerializeField] AudioClip _jumpAudio;
+        [SerializeField] [Range(0.1f, 1)] float _jumpAudioVolume;
 
         AudioSource _audioSource;
 
@@ -29,6 +30,11 @@ namespace Core.Audio
         public void PlayAttackAudio()
         {
             _audioSource.PlayOneShot(_attackAudio, _attackAudioVolume);
+        }
+
+        public void PlayJumpAudio()
+        {
+            _audioSource.PlayOneShot(_jumpAudio, _jumpAudioVolume);
         }
     }
 }

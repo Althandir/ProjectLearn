@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &296921671483139333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5928729806986769659}
+  m_Layer: 0
+  m_Name: PushDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5928729806986769659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296921671483139333}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4233209817194505655}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3301062983156030547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7044493068659749794}
+  m_Layer: 0
+  m_Name: PushOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7044493068659749794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301062983156030547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4233209817194505655}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4233209815479254542
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +262,7 @@ MonoBehaviour:
   _jumpForce: 7
   _movementSpeed: 1
   _damageValue: 25
-  _attackArea: {fileID: 4233209817194505648}
+  _attackArea: {fileID: 0}
 --- !u!95 &4233209815850035781
 Animator:
   serializedVersion: 3
@@ -339,6 +399,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movingAudio: {fileID: 8300000, guid: 21b82517298cff746b59568f7df12de5, type: 3}
+  _movingAudioVolume: 0
+  _attackAudio: {fileID: 0}
+  _attackAudioVolume: 0
+  _jumpAudio: {fileID: 0}
+  _jumpAudioVolume: 0
 --- !u!1 &4233209816288704556
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4233209817194505655}
   - component: {fileID: 4233209817194505649}
-  - component: {fileID: 4233209817194505648}
+  - component: {fileID: 5868994247575664913}
   m_Layer: 0
   m_Name: AttackArea
   m_TagString: Untagged
@@ -661,7 +726,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7044493068659749794}
+  - {fileID: 5928729806986769659}
   m_Father: {fileID: 4233209815850035833}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -689,9 +756,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.25}
+  m_Size: {x: 0.3, y: 0.4}
   m_EdgeRadius: 0
---- !u!114 &4233209817194505648
+--- !u!114 &5868994247575664913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -700,9 +767,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4233209817194505654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded5fa5e33348cf428fa4c1cf6cc3ee6, type: 3}
+  m_Script: {fileID: 11500000, guid: cd718305dd87e564190a6a2d2e4cf793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pushOrigin: {fileID: 7044493068659749794}
+  _pushDirection: {fileID: 5928729806986769659}
+  _pushPowerX: 250
+  _pushPowerY: 400
 --- !u!1 &4233209817221517367
 GameObject:
   m_ObjectHideFlags: 0

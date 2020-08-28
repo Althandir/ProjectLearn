@@ -1,16 +1,19 @@
 ﻿using Player;
 
-public class HitablePlayer : Hitable
+namespace Targetable
 {
-    PlayerEntity _entity;
-
-    private void Awake()
+    public class HitablePlayer : Hitable
     {
-        _entity = transform.parent.GetComponent<PlayerEntity>();
-    }
+        PlayerEntity _entity;
 
-    override public void OnHit(int damageValue)
-    {
-        _entity.Hitpoints = -damageValue;
+        private void Awake()
+        {
+            _entity = transform.parent.GetComponent<PlayerEntity>();
+        }
+
+        override public void OnHit(int damageValue)
+        {
+            _entity.Hitpoints = -damageValue;
+        }
     }
 }

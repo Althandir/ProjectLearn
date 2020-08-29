@@ -14,7 +14,6 @@ public class CursorSettings : MonoBehaviour
         if (!cursorSettings)
         {
             cursorSettings = this;
-            DontDestroyOnLoad(this);
             Cursor.visible = true;
         }
         else

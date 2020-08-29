@@ -1,7 +1,9 @@
-﻿using Enemy.AI;
+﻿using Enemy;
+using Enemy.AI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core.EnemySpawner
 {
@@ -9,13 +11,22 @@ namespace Core.EnemySpawner
     {
         [SerializeField] GameObject _EnemyPrefab;
         [SerializeField] List<Transform> _spawnPostitions = new List<Transform>();
-        [SerializeField] int _maxCounter = 0;
-        [SerializeField] float _spawnDelayInSec = 1.0f;
-        [SerializeField] protected int _counterMultiplicator = 2;
+        [SerializeField] int _maxEnemyCount = 0;
+        [SerializeField][Range(1.0f, 5.0f)] float _minSpawnDelaySec = 1.0f;
+        [SerializeField][Range(1.0f, 5.0f)] float _maxSpawnDelaySec = 5.0f;
+        [SerializeField] protected float _enemyCountMultiplicator = 1.5f;
 
-        int _currentCounter = 0;
+        int _currentEnemyCount = 0;
         bool _activeSpawnerRoutine;
 
+        UnityEvent _allChildrenDisabledEvent = new UnityEvent();
+
+        public UnityEvent AllChildrenDisabledEvent { get => _allChildrenDisabledEvent; }
+
+        private void Awake()
+        {
+            CheckForPrerequisites();
+        }
 
         void CheckForPrerequisites()
         {
@@ -29,22 +40,22 @@ namespace Core.EnemySpawner
                 Debug.LogError("No Spawnpositions in Spawner! " + gameObject.name);
                 this.enabled = false;
             }
-        }
-
-        private void Awake()
-        {
-            CheckForPrerequisites();
+            if (_minSpawnDelaySec > _maxSpawnDelaySec)
+            {
+                _minSpawnDelaySec = _maxSpawnDelaySec;
+                Debug.LogError("MinSpawnDelay is bigger than MaxSpawnDelay! Always using MaxDelay.");
+            }
         }
 
         /// <summary>
-        /// Starts the Spawner, if the Routine is not already running and there are no active Childs
+        /// Starts the Spawner, if the Routine is not already running and there are no active Childs. 
         /// </summary>
         [ContextMenu("DEBUG_StartSpawner")]
         public void StartSpawner()
         {
-            if (!_activeSpawnerRoutine && NoActiveChildren())
+            if (!_activeSpawnerRoutine && !HasActiveChildren())
             {
-                CheckAmountOfChildren();
+                CreateNewChildren();
                 StartCoroutine(SpawnRoutine());
             }
             else
@@ -56,46 +67,53 @@ namespace Core.EnemySpawner
         /// <summary>
         /// Checks if the spawner has any active Enemies.
         /// </summary>
-        /// <returns>False when any child is active, True when every child is inactive</returns>
-        public bool NoActiveChildren()
+        /// <returns>True when any child is active, False when every child is inactive</returns>
+        public bool HasActiveChildren()
         {
             foreach (Transform child in transform)
             {
                 if (child.gameObject.activeSelf)
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
-        void CheckAmountOfChildren()
+        void CreateNewChildren()
         {
-            while (transform.childCount != _maxCounter)
+            while (transform.childCount != _maxEnemyCount)
             {
-                Debug.Log("Spawner need more Children! Generating...");
                 GameObject newEnemy = Instantiate(_EnemyPrefab, Vector3.zero, Quaternion.identity, this.transform);
+                newEnemy.GetComponent<EnemyEntity>().OnDisableEvent.AddListener(ChildDisabledHandler);
                 newEnemy.SetActive(false);
             }
-            Debug.Log("There are enough Children for the Spawner.");
+        }
+
+        private void ChildDisabledHandler()
+        {
+            if (!HasActiveChildren())
+            {
+                _allChildrenDisabledEvent.Invoke();
+            }
         }
 
         IEnumerator SpawnRoutine()
         {
             _activeSpawnerRoutine = true;
-            while (_activeSpawnerRoutine && _currentCounter < _maxCounter)
+            while (_activeSpawnerRoutine && _currentEnemyCount < _maxEnemyCount)
             {
                 foreach (Transform enemyEntity in this.transform)
                 {
-                    yield return new WaitForSecondsRealtime(_spawnDelayInSec);
+                    yield return new WaitForSecondsRealtime(Random.Range(_minSpawnDelaySec,_maxSpawnDelaySec));
                     MoveEnemyToSpawnPosPosition(enemyEntity);
                     enemyEntity.gameObject.SetActive(true);
                     enemyEntity.GetComponent<EnemyAI>().enabled = true;
-                    _currentCounter += 1;
+                    _currentEnemyCount += 1;
                 }
             }
 
-            _currentCounter = 0;
+            _currentEnemyCount = 0;
             _activeSpawnerRoutine = false;
 
             IncreaseMaxCounter();
@@ -103,12 +121,12 @@ namespace Core.EnemySpawner
 
         void MoveEnemyToSpawnPosPosition(Transform enemyEntity)
         {
-            enemyEntity.position = _spawnPostitions[Random.Range(0, _spawnPostitions.Count - 1)].position;
+            enemyEntity.position = _spawnPostitions[UnityEngine.Random.Range(0, _spawnPostitions.Count - 1)].position;
         }
 
         virtual protected void IncreaseMaxCounter()
         {
-            _maxCounter *= _counterMultiplicator;
+            _maxEnemyCount = Mathf.RoundToInt((float)_maxEnemyCount * _enemyCountMultiplicator);
         }
     }
 }

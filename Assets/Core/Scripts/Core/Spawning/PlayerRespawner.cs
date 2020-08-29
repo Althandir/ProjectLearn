@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Core.City;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,12 @@ namespace Player.Respawner
         private void Start()
         {
             PlayerEntity.StaticReference.OnPlayerDead.AddListener(HandlePlayerDeath);
+            CityValues.StaticReference.CityDestroyedEvent.AddListener(OnCityDeath);
+        }
+
+        private void OnCityDeath()
+        {
+            this.enabled = false;
         }
 
         private void HandlePlayerDeath()

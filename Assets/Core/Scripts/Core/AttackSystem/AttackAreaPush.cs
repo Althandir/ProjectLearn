@@ -29,11 +29,6 @@ namespace Core.Attack
                 (_pushDirection.position.x - _pushOrigin.position.x)*_pushPowerX,
                 (_pushDirection.position.y - _pushOrigin.position.y)*_pushPowerY);
         }
-
-        private void Update()
-        {
-            Debug.Log(CalcPushDirection());
-        }
     }
 }
 

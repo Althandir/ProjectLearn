@@ -1,5 +1,6 @@
 ﻿using Targetable;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Enemy
 {
@@ -11,18 +12,7 @@ namespace Enemy
         Animator _animator;
         Vector3 _initScale;
 
-
-        private void Awake()
-        {
-            _animator = GetComponent<Animator>();
-            _initScale = transform.localScale;
-        }
-
-        private void OnEnable()
-        {
-            _hitpoints = 100;
-            _isAlive = true;
-        }
+        UnityEvent _OnDisableEvent = new UnityEvent();
 
         public int Hitpoints
         {
@@ -40,12 +30,25 @@ namespace Enemy
         }
 
         public bool IsAlive { get => _isAlive; }
+        public UnityEvent OnDisableEvent { get => _OnDisableEvent; }
+
+        #region Unity Messages
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+            _initScale = transform.localScale;
+        }
+        private void OnEnable()
+        {
+            _hitpoints = 100;
+            _isAlive = true;
+        }
+        #endregion
 
         void DisableEntity()
         {
             this.gameObject.SetActive(false);
+            _OnDisableEvent.Invoke();
         }
-
     }
-
 }

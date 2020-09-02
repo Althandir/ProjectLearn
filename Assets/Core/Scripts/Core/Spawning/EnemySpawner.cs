@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Core.EnemySpawner
+namespace Core.Spawning
 {
     public class EnemySpawner : MonoBehaviour
     {
@@ -85,7 +85,8 @@ namespace Core.EnemySpawner
             while (transform.childCount != _maxEnemyCount)
             {
                 GameObject newEnemy = Instantiate(_EnemyPrefab, Vector3.zero, Quaternion.identity, this.transform);
-                newEnemy.GetComponent<EnemyEntity>().OnDisableEvent.AddListener(ChildDisabledHandler);
+                newEnemy.GetComponent<EnemyEntity>().OnKilledEvent.AddListener(ChildDisabledHandler);
+                Player.PlayerScore.Instance.AddListenerForEnemyDead(newEnemy.GetComponent<EnemyEntity>());
                 newEnemy.SetActive(false);
             }
         }

@@ -6,11 +6,11 @@ namespace GameUI.Sliders
     {
         protected override void Start()
         {
-            PlayerEntity.StaticReference.OnPlayerLifeChanged.AddListener(OnLifeChanged);
+            PlayerEntity.Instance.OnPlayerLifeChanged.AddListener(OnLifeChanged);
 
-            _slider.maxValue = PlayerEntity.StaticReference.MaxHitpoints;
+            _slider.maxValue = PlayerEntity.Instance.MaxHitpoints;
             // Should be done somehow better :/
-            _slider.value = PlayerEntity.StaticReference.MaxHitpoints;
+            _slider.value = PlayerEntity.Instance.MaxHitpoints;
         }
     }
 }

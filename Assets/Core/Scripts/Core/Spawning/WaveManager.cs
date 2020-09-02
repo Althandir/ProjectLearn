@@ -1,68 +1,105 @@
-﻿using Core.EnemySpawner;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+namespace Core.Spawning
 {
-    [SerializeField] EnemySpawner[] _spawners;
-    [SerializeField] float _startDelaySec = 3.0f;
-    [SerializeField] bool _SpawnWave;
-
-    private void Awake()
+    public class WaveManager : MonoBehaviour
     {
-        _spawners = transform.GetComponentsInChildren<EnemySpawner>();
-        AddListenersToSpawners();
-    }
+        static WaveManager s_waveManager;
 
-    public void Start()
-    {
-        StartNextWave();
-    }
+        [SerializeField] EnemySpawner[] _spawners;
+        [SerializeField] float _startDelaySec = 3.0f;
+        [SerializeField] bool _SpawningWave;
+        [SerializeField] int _waveCounter = 1;
 
-    private void OnDisable()
-    {
+        EventInt _NextWaveEvent = new EventInt();
 
-    }
+        public EventInt NextWaveEvent { get => _NextWaveEvent; }
+        static public WaveManager Instance { get => s_waveManager; }
 
-    void AddListenersToSpawners()
-    {
-        foreach (EnemySpawner spawner in _spawners)
+        private void Awake()
         {
-            spawner.AllChildrenDisabledEvent.AddListener(CheckForNextWave);
-        }
-    }
-
-    void CheckForNextWave()
-    {
-        foreach (EnemySpawner spawner in _spawners)
-        {
-            if (spawner.HasActiveChildren())
-            {
-                return;
-            }
+            CreateSingleton();
+            _spawners = transform.GetComponentsInChildren<EnemySpawner>();
+            AddListenersToSpawners();
         }
 
-        StartNextWave();
-    }
-
-    void StartNextWave()
-    {
-        _SpawnWave = true;
-        StartCoroutine(WaveRoutine());
-    }
-
-    IEnumerator WaveRoutine()
-    {
-        while (_SpawnWave)
+        public void Start()
         {
-            yield return new WaitForSecondsRealtime(_startDelaySec);
+            StartNextWave();
+        }
+
+        private void OnDestroy()
+        {
+            DestroySingleton();
+        }
+
+        void AddListenersToSpawners()
+        {
             foreach (EnemySpawner spawner in _spawners)
             {
-                spawner.StartSpawner();
+                spawner.AllChildrenDisabledEvent.AddListener(CheckForNextWave);
             }
-            _SpawnWave = false;
         }
-    }
 
+        void CheckForNextWave()
+        {
+            foreach (EnemySpawner spawner in _spawners)
+            {
+                if (spawner.HasActiveChildren())
+                {
+                    return;
+                }
+            }
+
+            StartNextWave();
+        }
+
+        void StartNextWave()
+        {
+            _SpawningWave = true;
+            StartCoroutine(WaveRoutine());
+        }
+
+        IEnumerator WaveRoutine()
+        {
+            while (_SpawningWave)
+            {
+                yield return new WaitForSecondsRealtime(_startDelaySec);
+
+                _waveCounter += 1;
+                _NextWaveEvent.Invoke(_waveCounter);
+
+                foreach (EnemySpawner spawner in _spawners)
+                {
+                    spawner.StartSpawner();
+                }
+                _SpawningWave = false;
+            }
+        }
+
+        #region Singleton
+        void CreateSingleton()
+        {
+            if (!s_waveManager)
+            {
+                s_waveManager = this;
+            }
+            else
+            {
+                Debug.LogError($"Duplicated {this} found in {this.gameObject}!");
+                Destroy(this);
+            }
+        }
+        void DestroySingleton()
+        {
+            if (s_waveManager = this)
+            {
+                s_waveManager = null;
+            }
+        }
+
+        #endregion
+
+    }
 }

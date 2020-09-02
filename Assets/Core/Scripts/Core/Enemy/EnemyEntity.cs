@@ -12,7 +12,8 @@ namespace Enemy
         Animator _animator;
         Vector3 _initScale;
 
-        UnityEvent _OnDisableEvent = new UnityEvent();
+        //TODO: Maybe static Event?
+        UnityEvent _OnKilledEvent = new UnityEvent();
 
         public int Hitpoints
         {
@@ -30,7 +31,7 @@ namespace Enemy
         }
 
         public bool IsAlive { get => _isAlive; }
-        public UnityEvent OnDisableEvent { get => _OnDisableEvent; }
+        public UnityEvent OnKilledEvent { get => _OnKilledEvent; }
 
         #region Unity Messages
         private void Awake()
@@ -45,10 +46,10 @@ namespace Enemy
         }
         #endregion
 
-        void DisableEntity()
+        public void DisableEntity()
         {
             this.gameObject.SetActive(false);
-            _OnDisableEvent.Invoke();
+            _OnKilledEvent.Invoke();
         }
     }
 }

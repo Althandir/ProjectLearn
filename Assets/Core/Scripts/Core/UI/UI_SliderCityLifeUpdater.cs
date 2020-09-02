@@ -5,10 +5,10 @@ namespace GameUI.Sliders
     {
         override protected void Start()
         {
-            CityValues.StaticReference.CityLifeChangedEvent.AddListener(OnLifeChanged);
+            CityValues.Instance.CityLifeChangedEvent.AddListener(OnLifeChanged);
 
-            _slider.maxValue = CityValues.StaticReference.MaxCityLife;
-            _slider.value = CityValues.StaticReference.MaxCityLife;
+            _slider.maxValue = CityValues.Instance.MaxCityLife;
+            _slider.value = CityValues.Instance.MaxCityLife;
         }
     }
 }

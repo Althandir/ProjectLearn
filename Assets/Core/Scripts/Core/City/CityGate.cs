@@ -7,7 +7,7 @@ namespace Core.City
     public class CityGate : MonoBehaviour
     {
         static CityGate s_CityGate;
-        public static CityGate StaticReference { get => s_CityGate; }
+        public static CityGate Instance { get => s_CityGate; }
 
         UnityEvent _enemyEnteredGate = new UnityEvent();
         public UnityEvent EnemyEnteredGateEvent { get => _enemyEnteredGate;}
@@ -44,7 +44,7 @@ namespace Core.City
 
         void DisableEnemyEntity(GameObject enemy)
         {
-            enemy.SetActive(false);
+            enemy.GetComponent<Enemy.EnemyEntity>().DisableEntity();
         }
 
         void EnemyEnteredGate()

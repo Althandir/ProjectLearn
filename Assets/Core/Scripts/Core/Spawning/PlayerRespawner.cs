@@ -14,8 +14,8 @@ namespace Player.Respawner
         
         private void Start()
         {
-            PlayerEntity.StaticReference.OnPlayerDead.AddListener(HandlePlayerDeath);
-            CityValues.StaticReference.CityDestroyedEvent.AddListener(OnCityDeath);
+            PlayerEntity.Instance.OnPlayerDead.AddListener(HandlePlayerDeath);
+            CityValues.Instance.CityDestroyedEvent.AddListener(OnCityDeath);
         }
 
         private void OnCityDeath()
@@ -40,9 +40,9 @@ namespace Player.Respawner
                 yield return new WaitForFixedUpdate();
             }
             
-            PlayerEntity.StaticReference.transform.position = _spawnPositions[UnityEngine.Random.Range(0,_spawnPositions.Count-1)].position;
-            PlayerEntity.StaticReference.Respawn();
-            PlayerEntity.StaticReference.enabled = true;
+            PlayerEntity.Instance.transform.position = _spawnPositions[UnityEngine.Random.Range(0,_spawnPositions.Count-1)].position;
+            PlayerEntity.Instance.Respawn();
+            PlayerEntity.Instance.enabled = true;
 
             _timeCounter = 0.0f;
             _isRespawning = false;

@@ -27,7 +27,7 @@ namespace Player
         Animator _animator;
 
 
-        UnityEventInt _onPlayerLifeChanged = new UnityEventInt();
+        EventInt _onPlayerLifeChanged = new EventInt();
         UnityEvent _onPlayerDead = new UnityEvent();
         UnityEvent _onPlayerRespawn = new UnityEvent();
 
@@ -54,8 +54,8 @@ namespace Player
             }
         }
 
-        public static PlayerEntity StaticReference { get => s_PlayerEntity ;}
-        public UnityEventInt OnPlayerLifeChanged { get => _onPlayerLifeChanged; }
+        public static PlayerEntity Instance { get => s_PlayerEntity ;}
+        public EventInt OnPlayerLifeChanged { get => _onPlayerLifeChanged; }
         public int MaxHitpoints { get => _maxHitpoints; }
         public UnityEvent OnPlayerRespawn { get => _onPlayerRespawn; }
 

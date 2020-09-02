@@ -12,11 +12,12 @@ namespace Core.City
         int _cityLife;
 
         UnityEvent _cityDestroyedEvent = new UnityEvent();
-        UnityEventInt _cityLifeChangedEvent = new UnityEventInt();
+        EventInt _cityLifeChangedEvent = new EventInt();
 
+        // TODO: Finish EndGame Mechanics!
         public UnityEvent CityDestroyedEvent { get => _cityDestroyedEvent; }
-        public UnityEventInt CityLifeChangedEvent { get => _cityLifeChangedEvent; }
-        public static CityValues StaticReference { get => s_CityValues; }
+        public EventInt CityLifeChangedEvent { get => _cityLifeChangedEvent; }
+        public static CityValues Instance { get => s_CityValues; }
         public int MaxCityLife { get => _maxCityLife; }
 
 
@@ -30,7 +31,7 @@ namespace Core.City
 
         private void Start()
         {
-            CityGate.StaticReference.EnemyEnteredGateEvent.AddListener(OnEnemyEntered);
+            CityGate.Instance.EnemyEnteredGateEvent.AddListener(OnEnemyEntered);
         }
 
         private void OnDestroy()
@@ -61,7 +62,6 @@ namespace Core.City
         }
         #endregion
 
-
         private void OnEnemyEntered()
         {
             DecreaseCityLife();
@@ -79,7 +79,7 @@ namespace Core.City
             if (_cityLife <= 0)
             {
                 _cityDestroyedEvent.Invoke();
-                CityGate.StaticReference.EnemyEnteredGateEvent.RemoveListener(OnEnemyEntered);
+                CityGate.Instance.EnemyEnteredGateEvent.RemoveListener(OnEnemyEntered);
             }
         }
     }

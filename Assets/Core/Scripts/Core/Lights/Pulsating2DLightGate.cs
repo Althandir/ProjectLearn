@@ -20,7 +20,7 @@ namespace Lights
 
         private void Start()
         {
-            CityGate.StaticReference.EnemyEnteredGateEvent.AddListener(OnEnemyEnteredGate);
+            CityGate.Instance.EnemyEnteredGateEvent.AddListener(OnEnemyEnteredGate);
         }
 
         private void OnEnemyEnteredGate()

@@ -9,8 +9,10 @@ namespace Player
 
         long score;
         [SerializeField] int _enemyPointValue = 10;
-
+        [SerializeField] int _playerDeathValue = 100;
         EventLong _OnScoreChanged = new EventLong();
+
+        bool _cityDestroyed;
 
         static public PlayerScore Instance { get => s_PlayerScore; }
         public long Score 
@@ -41,6 +43,7 @@ namespace Player
             LinkToCityValues();
             LinkToCityGate();
             LinkToWaveManager();
+            LinkToPlayerEntity();
         }
 
         private void OnDestroy()
@@ -71,13 +74,21 @@ namespace Player
         {
             Core.Spawning.WaveManager.Instance.NextWaveEvent.AddListener(HandleNextWave);
         }
+        void LinkToPlayerEntity()
+        {
+            PlayerEntity.Instance.OnPlayerDead.AddListener(HandlePlayerDeath);
+        }
 
         #endregion
 
         #region EventHandling
         private void OnEnemyDisable()
         {
-            Score += _enemyPointValue;
+            // Maybe with static EnemyDisabled event this _CityDestoryed would not be required?
+            if (!_cityDestroyed)
+            {
+                Score += _enemyPointValue;
+            }
         }
 
         private void HandleEnemyEnteredGate()
@@ -88,11 +99,17 @@ namespace Player
         {
             CalcNewEnemyPointValue(waveCounter);
         }
+        private void HandlePlayerDeath()
+        {
+            Score -= _playerDeathValue;
+        }
 
         private void HandleCityDeath()
         {
+            _cityDestroyed = true;
             Core.City.CityGate.Instance.EnemyEnteredGateEvent.RemoveListener(HandleEnemyEnteredGate);
             Core.Spawning.WaveManager.Instance.NextWaveEvent.RemoveListener(HandleNextWave);
+            PlayerEntity.Instance.OnPlayerDead.RemoveListener(HandlePlayerDeath);
         }
         #endregion
 

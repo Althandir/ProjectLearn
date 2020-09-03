@@ -1,4 +1,5 @@
 ﻿using Core.City;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,9 +7,11 @@ namespace Lights
 {
     public class Pulsating2DLightGate : Pulsating2DLight
     {
-        UnityEngine.Color _initColor;
+        Color _initColor;
         bool _colorChangeActive;
+
         [SerializeField] float _onEnemyEnteredColorChangeDuration = 2.0f;
+        [SerializeField] Color _targetColor = Color.red;
 
         float counter = 0.0f;
 
@@ -21,6 +24,15 @@ namespace Lights
         private void Start()
         {
             CityGate.Instance.EnemyEnteredGateEvent.AddListener(OnEnemyEnteredGate);
+            CityValues.Instance.CityDestroyedEvent.AddListener(OnCityDeath);
+        }
+
+        private void OnCityDeath()
+        {
+            CityGate.Instance.EnemyEnteredGateEvent.RemoveListener(OnEnemyEnteredGate);
+            StopAllCoroutines();
+            _colorChangeActive = true;
+            _light.color = _targetColor;
         }
 
         private void OnEnemyEnteredGate()
@@ -36,7 +48,7 @@ namespace Lights
 
         IEnumerator ColorChangeRoutine()
         {
-            _light.color = new Color(1, 0, 0, _initColor.a / 2);
+            _light.color = _targetColor;
             
             while (_colorChangeActive)
             {

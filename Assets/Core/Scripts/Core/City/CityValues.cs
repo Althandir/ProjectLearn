@@ -14,7 +14,7 @@ namespace Core.City
         UnityEvent _cityDestroyedEvent = new UnityEvent();
         EventInt _cityLifeChangedEvent = new EventInt();
 
-        // TODO: Finish EndGame Mechanics!
+        // TODO: Finish EndGame UI!
         public UnityEvent CityDestroyedEvent { get => _cityDestroyedEvent; }
         public EventInt CityLifeChangedEvent { get => _cityLifeChangedEvent; }
         public static CityValues Instance { get => s_CityValues; }

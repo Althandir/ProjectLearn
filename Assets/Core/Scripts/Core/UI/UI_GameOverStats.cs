@@ -26,7 +26,7 @@ namespace GameUI.GameOver
             _text.text = string.Format(
                 _savedPeopleText + ": {0} \n " +
                 _WaveCounterText + ": {1} \n " +
-                _playtimeText + ": {2}",
+                _playtimeText + ": {2}s",
                 Player.PlayerScore.Instance.Score.ToString(), Core.Spawning.WaveManager.Instance.WaveCounter.ToString(), Time.realtimeSinceStartup.ToString("N0"));
         }
         #endregion

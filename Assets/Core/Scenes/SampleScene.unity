@@ -392,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 6897554924814850270, guid: ec5502ae272c00e4b8b32f5e6603847e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 27.50004
+      value: 27.500048
       objectReference: {fileID: 0}
     - target: {fileID: 8014230815372182286, guid: ec5502ae272c00e4b8b32f5e6603847e,
         type: 3}
@@ -3980,7 +3980,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.2
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 1d0d44eb95eaf0e945d7d27fd526fe2700000000
   m_LightCookieSprite: {fileID: 0}
@@ -5313,7 +5313,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0

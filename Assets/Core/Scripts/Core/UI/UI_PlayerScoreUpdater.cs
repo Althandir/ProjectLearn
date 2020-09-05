@@ -1,13 +1,8 @@
-﻿using UnityEngine;
-using TMPro;
-
-namespace GameUI
-{ 
-    public class UI_PlayerScoreUpdater : MonoBehaviour
+﻿namespace GameUI
+{
+    public class UI_PlayerScoreUpdater : UI_TextUpdater
     {
-        [SerializeField] TMP_Text _text;
-
-        private void Start()
+        override protected void Start()
         {
             Player.PlayerScore.Instance.OnScoreChanged.AddListener(ApplyNewScore);
             ApplyNewScore(0);

@@ -16,6 +16,7 @@ namespace Core.Spawning
 
         public EventInt NextWaveEvent { get => _NextWaveEvent; }
         static public WaveManager Instance { get => s_waveManager; }
+        public int WaveCounter { get => _waveCounter;}
 
         private void Awake()
         {

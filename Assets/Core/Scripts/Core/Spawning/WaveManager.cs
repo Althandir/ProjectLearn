@@ -9,7 +9,7 @@ namespace Core.Spawning
 
         [SerializeField] EnemySpawner[] _spawners;
         [SerializeField] float _startDelaySec = 3.0f;
-        [SerializeField] bool _SpawningWave;
+        [SerializeField] bool _prepairingWave;
         [SerializeField] int _waveCounter = 1;
 
         EventInt _NextWaveEvent = new EventInt();
@@ -58,13 +58,13 @@ namespace Core.Spawning
 
         void StartNextWave()
         {
-            _SpawningWave = true;
+            _prepairingWave = true;
             StartCoroutine(WaveRoutine());
         }
 
         IEnumerator WaveRoutine()
         {
-            while (_SpawningWave)
+            while (_prepairingWave)
             {
                 yield return new WaitForSecondsRealtime(_startDelaySec);
 
@@ -75,7 +75,7 @@ namespace Core.Spawning
                 {
                     spawner.StartSpawner();
                 }
-                _SpawningWave = false;
+                _prepairingWave = false;
             }
         }
 

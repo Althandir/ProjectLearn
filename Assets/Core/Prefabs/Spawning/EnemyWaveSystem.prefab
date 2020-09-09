@@ -215,6 +215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawners: []
-  _startDelaySec: 45
-  _SpawningWave: 0
+  _startDelaySec: 5
+  _prepairingWave: 0
   _waveCounter: 0

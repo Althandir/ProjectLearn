@@ -8,11 +8,14 @@ namespace Core.Audio
         [SerializeField] AudioClip _movingAudio;
         [SerializeField] [Range(0.1f, 1)] float _movingAudioVolume;
 
-        [SerializeField] AudioClip _attackAudio;
+        [SerializeField] AudioClip _attackingAudio;
         [SerializeField] [Range(0.1f, 1)] float _attackAudioVolume;
 
         [SerializeField] AudioClip _jumpAudio;
         [SerializeField] [Range(0.1f, 1)] float _jumpAudioVolume;
+
+        [SerializeField] AudioClip _damagedAudio;
+        [SerializeField] [Range(0.1f, 1)] float _damagedAudioVolume;
 
         AudioSource _audioSource;
 
@@ -27,14 +30,19 @@ namespace Core.Audio
             _audioSource.PlayOneShot(_movingAudio, _movingAudioVolume);
         }
 
-        public void PlayAttackAudio()
+        public void PlayAttackingAudio()
         {
-            _audioSource.PlayOneShot(_attackAudio, _attackAudioVolume);
+            _audioSource.PlayOneShot(_attackingAudio, _attackAudioVolume);
         }
 
         public void PlayJumpAudio()
         {
             _audioSource.PlayOneShot(_jumpAudio, _jumpAudioVolume);
+        }
+
+        public void PlayDamagedAudio()
+        {
+            _audioSource.PlayOneShot(_damagedAudio, _damagedAudioVolume);
         }
     }
 }

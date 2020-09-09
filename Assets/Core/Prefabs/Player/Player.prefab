@@ -262,7 +262,7 @@ MonoBehaviour:
   _jumpForce: 7
   _movementSpeed: 1
   _damageValue: 25
-  _attackArea: {fileID: 0}
+  _attackArea: {fileID: 5868994247575664913}
 --- !u!95 &4233209815850035781
 Animator:
   serializedVersion: 3
@@ -400,10 +400,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movingAudio: {fileID: 8300000, guid: 21b82517298cff746b59568f7df12de5, type: 3}
   _movingAudioVolume: 0
-  _attackAudio: {fileID: 0}
+  _attackingAudio: {fileID: 8300000, guid: 52fa067c25c5c401b811eb86d142287e, type: 3}
   _attackAudioVolume: 0
   _jumpAudio: {fileID: 0}
   _jumpAudioVolume: 0
+  _damagedAudio: {fileID: 0}
+  _damagedAudioVolume: 0
 --- !u!1 &4233209816288704556
 GameObject:
   m_ObjectHideFlags: 0

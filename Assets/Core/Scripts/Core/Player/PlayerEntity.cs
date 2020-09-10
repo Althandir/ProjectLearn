@@ -20,6 +20,7 @@ namespace Player
         [SerializeField] int _damageValue = 25;
 
         [SerializeField] AttackArea _attackArea;
+        [SerializeField] Cinemachine.CinemachineVirtualCamera _playerVirtualCamera;
 
         bool _leftMovementActive;
         bool _rightMovementActive;
@@ -70,7 +71,12 @@ namespace Player
             _attackArea = transform.GetComponentInChildren<AttackArea>();
             _animator = GetComponent<Animator>();
             _initialScale = transform.localScale;
-            _onPlayerDead.AddListener(PlayerDead);
+            _onPlayerDead.AddListener(PlayerDeadHandler);
+        }
+
+        private void Start()
+        {
+            Core.City.CityValues.Instance.CityDestroyedEvent.AddListener(CityDeathHandler);
         }
 
         void Update()
@@ -114,13 +120,20 @@ namespace Player
         #endregion
 
         #region DeathHandling
-        void PlayerDead()
+        void PlayerDeadHandler()
         {
             _animator.SetBool("isDead", true);
 
             this.enabled = false;
             _rigidbody2D.velocity = Vector2.zero;
             _rigidbody2D.gravityScale = 0;
+        }
+
+        void CityDeathHandler()
+        {
+            PlayerDeadHandler();
+            
+            _playerVirtualCamera.Priority = -1000;
         }
         #endregion
 

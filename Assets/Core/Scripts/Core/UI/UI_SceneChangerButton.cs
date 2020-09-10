@@ -11,12 +11,20 @@ namespace GameUI
 
         public void LoadScene()
         {
-            SceneManager.LoadScene((int)_SceneToLoad);
+            if (_SceneToLoad == Scenes.ActiveLevel)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                SceneManager.LoadScene((int)_SceneToLoad);
+            }
+
         }
     }
 
     enum Scenes
     {
-        MainMenu, Tutorial
+        MainMenu, Tutorial, ActiveLevel
     }
 }

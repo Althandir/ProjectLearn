@@ -263,6 +263,7 @@ MonoBehaviour:
   _movementSpeed: 1
   _damageValue: 25
   _attackArea: {fileID: 5868994247575664913}
+  _playerVirtualCamera: {fileID: 4233209816771450981}
 --- !u!95 &4233209815850035781
 Animator:
   serializedVersion: 3

@@ -96,9 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.6
+  m_FalloffIntensity: 0.4
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.75
+  m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 1d0d44eb95eaf0e945d7d27fd526fe2700000000
   m_LightCookieSprite: {fileID: 21300000, guid: ae3918a914038694d852d0bb81f62473,

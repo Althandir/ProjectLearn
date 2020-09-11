@@ -21,6 +21,7 @@ namespace Player.Respawner
         private void OnCityDeath()
         {
             this.enabled = false;
+            PlayerEntity.Instance.OnPlayerDead.RemoveListener(HandlePlayerDeath);
         }
 
         private void HandlePlayerDeath()

@@ -122,7 +122,7 @@ namespace Core.Spawning
 
         void MoveEnemyToSpawnPosPosition(Transform enemyEntity)
         {
-            enemyEntity.position = _spawnPostitions[UnityEngine.Random.Range(0, _spawnPostitions.Count - 1)].position;
+            enemyEntity.position = _spawnPostitions[UnityEngine.Random.Range(0, _spawnPostitions.Count)].position;
         }
 
         virtual protected void IncreaseMaxCounter()

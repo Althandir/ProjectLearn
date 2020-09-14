@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566a24ce87c024d47b1038f115c7e998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxCityLife: 1
+  _maxCityLife: 10
 --- !u!1 &4346909847757945006
 GameObject:
   m_ObjectHideFlags: 0

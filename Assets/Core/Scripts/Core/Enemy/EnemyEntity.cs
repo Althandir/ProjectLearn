@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace Enemy
 {
-    [RequireComponent(typeof(HitableEnemy), typeof(Animator), typeof(Rigidbody2D))]
+    [RequireComponent(typeof(HitboxEnemy), typeof(Animator), typeof(Rigidbody2D))]
     public class EnemyEntity : MonoBehaviour
     {
         [SerializeField] int _hitpoints;
@@ -12,7 +12,6 @@ namespace Enemy
         Animator _animator;
         Vector3 _initScale;
 
-        //TODO: Maybe static Event?
         UnityEvent _OnKilledEvent = new UnityEvent();
 
         public int Hitpoints
@@ -21,7 +20,6 @@ namespace Enemy
             set
             {
                 _hitpoints += value;
-                Debug.Log(_hitpoints);
                 if (_hitpoints <= 0)
                 {
                     _isAlive = false;

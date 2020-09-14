@@ -16,13 +16,13 @@ namespace Core.Attack
 
             foreach (Collider2D item in temp_InRange)
             {
-                item.GetComponent<Hitable>().OnHit(damageValue);
+                item.GetComponent<Hitbox>().OnHit(damageValue);
             }
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.GetComponent<Hitable>())
+            if (collision.GetComponent<Hitbox>())
             {
                 _inAttackRange.Add(collision);
             }

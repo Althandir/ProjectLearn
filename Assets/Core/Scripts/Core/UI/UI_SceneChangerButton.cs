@@ -25,6 +25,6 @@ namespace GameUI
 
     enum Scenes
     {
-        MainMenu, Tutorial, ActiveLevel
+        MainMenu, Tutorial, Level01, ActiveLevel
     }
 }

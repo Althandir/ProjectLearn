@@ -2,10 +2,9 @@
 
 namespace Targetable
 {
-    public class HitablePlayer : Hitable
+    public class HitboxPlayer : Hitbox
     {
         PlayerEntity _entity;
-
         private void Awake()
         {
             _entity = transform.parent.GetComponent<PlayerEntity>();
@@ -13,6 +12,7 @@ namespace Targetable
 
         override public void OnHit(int damageValue)
         {
+            base.OnHit(damageValue);
             _entity.Hitpoints = -damageValue;
         }
     }

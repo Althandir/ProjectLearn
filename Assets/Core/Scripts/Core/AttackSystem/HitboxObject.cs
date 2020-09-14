@@ -2,14 +2,12 @@
 
 namespace Targetable
 {
-
-
-    public class HitableObject : Hitable
+    public class HitboxObject : Hitbox
     {
 
         public override void OnHit(int damageValue)
         {
-            Debug.LogWarning("Object has been hit.");
+            base.OnHit(damageValue);
         }
     }
 

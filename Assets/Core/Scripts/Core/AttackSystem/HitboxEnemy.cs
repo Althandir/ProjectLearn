@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Targetable
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class HitableEnemy : Hitable
+    public class HitboxEnemy : Hitbox
     {
         EnemyEntity _entity;
         Rigidbody2D _rb2D;
@@ -17,6 +17,7 @@ namespace Targetable
 
         override public void OnHit(int damageValue)
         {
+            base.OnHit(damageValue);
             _entity.Hitpoints = -damageValue;
         }
 

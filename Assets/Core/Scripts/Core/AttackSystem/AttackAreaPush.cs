@@ -19,7 +19,7 @@ namespace Core.Attack
 
             foreach (Collider2D item in temp_InRange)
             {
-                item.GetComponent<Hitable>().OnHit(damageValue, CalcPushDirection());
+                item.GetComponent<Hitbox>().OnHit(damageValue, CalcPushDirection());
             }
         } 
 

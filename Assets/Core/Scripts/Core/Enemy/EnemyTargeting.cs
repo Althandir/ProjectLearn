@@ -25,7 +25,7 @@ namespace Enemy.AI.Targeting
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.GetComponent<HitablePlayer>())
+            if (collision.GetComponent<HitboxPlayer>())
             {
                 _playerDetected = true;
             }
@@ -33,7 +33,7 @@ namespace Enemy.AI.Targeting
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.GetComponent<HitablePlayer>())
+            if (collision.GetComponent<HitboxPlayer>())
             {
                 _playerDetected = false;
             }

@@ -17,7 +17,7 @@ namespace Enemy.Attack
         {
             base.OnTriggerEnter2D(collision);
 
-            if (collision.GetComponent<HitablePlayer>())
+            if (collision.GetComponent<HitboxPlayer>())
             {
                 _playerDetected = true;
                 _playerDetectedEvent.Invoke();
@@ -27,7 +27,7 @@ namespace Enemy.Attack
         {
             base.OnTriggerExit2D(collision);
 
-            if (collision.GetComponent<HitablePlayer>())
+            if (collision.GetComponent<HitboxPlayer>())
             {
                 _playerDetected = false;
             }

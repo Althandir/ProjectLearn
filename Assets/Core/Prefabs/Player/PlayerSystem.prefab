@@ -200,6 +200,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8350002942258246099, guid: eecf08a5586f2f2459e9cf80263b1b9b,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350002942258246099, guid: eecf08a5586f2f2459e9cf80263b1b9b,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350002942258246099, guid: eecf08a5586f2f2459e9cf80263b1b9b,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 521d8dbb-9aec-40c1-96e5-bd8327391cdc
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350002942258246099, guid: eecf08a5586f2f2459e9cf80263b1b9b,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: Player/Fire[/Mouse/leftButton]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eecf08a5586f2f2459e9cf80263b1b9b, type: 3}
 --- !u!4 &7759496818469618382 stripped

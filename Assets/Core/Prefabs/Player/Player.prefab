@@ -146,6 +146,8 @@ GameObject:
   - component: {fileID: 960846844081144382}
   - component: {fileID: 824931791658995749}
   - component: {fileID: 3963886310245590144}
+  - component: {fileID: 7616332201485940763}
+  - component: {fileID: 8550891004499335719}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -259,8 +261,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHitpoints: 100
   _hitpoints: 100
-  _jumpForce: 7
-  _movementSpeed: 1
   _damageValue: 25
   _attackArea: {fileID: 5868994247575664913}
   _playerVirtualCamera: {fileID: 4233209816771450981}
@@ -407,6 +407,97 @@ MonoBehaviour:
   _jumpAudioVolume: 0
   _damagedAudio: {fileID: 0}
   _damagedAudioVolume: 0
+--- !u!114 &7616332201485940763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233209815850035839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 29061b35483a02d489814ad8276fdad9,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8550891004499335719}
+        m_MethodName: HandleMovementInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 63ed378f-441d-4d53-a1fd-73b6af0af928
+    m_ActionName: Player/Left/Right Movement[/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8550891004499335719}
+        m_MethodName: HandleJumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e47be82b-6820-42a4-927b-ec6eeeccad93
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8550891004499335719}
+        m_MethodName: HandleAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 521d8dbb-9aec-40c1-96e5-bd8327391cdc
+    m_ActionName: Player/Attack[/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &8550891004499335719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233209815850035839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a49fd1667252f94c8a6c71ccea254cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Actions: {fileID: -944628639613478452, guid: 29061b35483a02d489814ad8276fdad9, type: 3}
+  _jumpForce: 6.5
+  _movementSpeed: 1
 --- !u!1 &4233209816288704556
 GameObject:
   m_ObjectHideFlags: 0

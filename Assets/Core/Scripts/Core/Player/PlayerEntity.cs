@@ -2,7 +2,6 @@
 using Player.GroundScan;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 namespace Player
 {
@@ -14,16 +13,11 @@ namespace Player
         [SerializeField] int _maxHitpoints = 100;
         [SerializeField] int _hitpoints; 
 
-        [SerializeField] float _jumpForce = 0.0f;
-        [SerializeField] float _movementSpeed = 1.0f;
         [SerializeField] int _damageValue = 25;
 
         [SerializeField] AttackArea _attackArea;
         [SerializeField] Cinemachine.CinemachineVirtualCamera _playerVirtualCamera;
 
-        bool _leftMovementActive;
-        bool _rightMovementActive;
-        bool _jumpPressed;
         Animator _animator;
 
 
@@ -34,7 +28,7 @@ namespace Player
         PlayerGroundScan _groundScanner;
 
         Rigidbody2D _rigidbody2D;
-        Vector3 _initialScale;
+
 
 
         public UnityEvent OnPlayerDead { get => _onPlayerDead; }
@@ -69,7 +63,7 @@ namespace Player
             _groundScanner = transform.GetComponentInChildren<PlayerGroundScan>();
             _attackArea = transform.GetComponentInChildren<AttackArea>();
             _animator = GetComponent<Animator>();
-            _initialScale = transform.localScale;
+
             _onPlayerDead.AddListener(PlayerDeadHandler);
         }
 
@@ -80,13 +74,11 @@ namespace Player
 
         void Update()
         {
-            ReadInput();
+
         }
 
         private void FixedUpdate()
         {
-            RotateTowardsMovementDirection();
-            ApplyInput();
             ApplyAnimations();
         }
 
@@ -183,71 +175,7 @@ namespace Player
         }
         #endregion
 
-        #region Inputsystem
-        private void ReadInput()
-        {
-            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-            {
-                _leftMovementActive = true;
-            }
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-            {
-                _rightMovementActive = true;
-            }
-            if (Keyboard.current.spaceKey.wasPressedThisFrame && _groundScanner.IsGrounded)
-            {
-                _jumpPressed = true;
-            }
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                _animator.SetTrigger("Attacking");
-            }
-        }
-
-        private void ApplyInput()
-        {
-            // Movement
-            // When both Keys are pressed
-            if (_leftMovementActive && _rightMovementActive)
-            {
-                _rigidbody2D.velocity = new Vector2(0, _rigidbody2D.velocity.y);
-                _leftMovementActive = false;
-                _rightMovementActive = false;
-            }
-            else
-            {
-                if (_leftMovementActive)
-                {
-                    _rigidbody2D.velocity = new Vector2(-3 * _movementSpeed, _rigidbody2D.velocity.y);
-                    _leftMovementActive = false;
-                }
-                if (_rightMovementActive)
-                {
-                    _rigidbody2D.velocity = new Vector2(3 * _movementSpeed, _rigidbody2D.velocity.y);
-                    _rightMovementActive = false;
-                }
-            }
-            
-            // Jumping
-            if (_jumpPressed)
-            {
-                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpForce);
-                _jumpPressed = false;
-            }
-        }
-
-        void RotateTowardsMovementDirection()
-        {
-            if (_leftMovementActive)
-            {
-                transform.localScale = new Vector3(_initialScale.x, _initialScale.y, _initialScale.z);
-            }
-            else if (_rightMovementActive)
-            {
-                transform.localScale = new Vector3(_initialScale.x * -1, _initialScale.y, _initialScale.z);
-            }
-        }
-        #endregion
+      
     }
 }
 

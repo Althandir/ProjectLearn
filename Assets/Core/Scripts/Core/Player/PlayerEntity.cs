@@ -194,7 +194,7 @@ namespace Player
             {
                 _rightMovementActive = true;
             }
-            if (Keyboard.current.spaceKey.isPressed && _groundScanner.IsGrounded)
+            if (Keyboard.current.spaceKey.wasPressedThisFrame && _groundScanner.IsGrounded)
             {
                 _jumpPressed = true;
             }

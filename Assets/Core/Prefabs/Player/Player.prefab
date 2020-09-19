@@ -495,7 +495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a49fd1667252f94c8a6c71ccea254cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Actions: {fileID: -944628639613478452, guid: 29061b35483a02d489814ad8276fdad9, type: 3}
+  _Actions: {fileID: -944628639613478452, guid: 29061b35483a02d489814ad8276fdad9,
+    type: 3}
   _jumpForce: 6.5
   _movementSpeed: 1
 --- !u!1 &4233209816288704556

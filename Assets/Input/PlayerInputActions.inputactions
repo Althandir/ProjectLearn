@@ -1,12 +1,12 @@
 {
-    "name": "ProjectLame",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Player",
             "id": "54493319-8fdd-4daf-bae7-67772847ee16",
             "actions": [
                 {
-                    "name": "Left/Right Movement",
+                    "name": "Left&Right Movement",
                     "type": "Value",
                     "id": "63ed378f-441d-4d53-a1fd-73b6af0af928",
                     "expectedControlType": "Vector2",
@@ -82,7 +82,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Left/Right Movement",
+                    "action": "Left&Right Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -93,7 +93,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Left/Right Movement",
+                    "action": "Left&Right Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -104,7 +104,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Left/Right Movement",
+                    "action": "Left&Right Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -115,7 +115,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Left/Right Movement",
+                    "action": "Left&Right Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -126,7 +126,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Left/Right Movement",
+                    "action": "Left&Right Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -137,7 +137,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Left/Right Movement",
+                    "action": "Left&Right Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

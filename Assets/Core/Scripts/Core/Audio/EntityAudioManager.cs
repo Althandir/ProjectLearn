@@ -2,9 +2,10 @@
 
 namespace Core.Audio
 {
-    [RequireComponent(typeof(AudioSource))]
     public class EntityAudioManager : MonoBehaviour
     {
+        [SerializeField] AudioSource _audioSource;
+
         [SerializeField] AudioClip _movingAudio;
         [SerializeField] [Range(0.1f, 1)] float _movingAudioVolume;
 
@@ -16,14 +17,6 @@ namespace Core.Audio
 
         [SerializeField] AudioClip _damagedAudio;
         [SerializeField] [Range(0.1f, 1)] float _damagedAudioVolume;
-
-        AudioSource _audioSource;
-
-
-        private void Awake()
-        {
-            _audioSource = GetComponent<AudioSource>();
-        }
 
         public void PlayMovingAudio()
         {

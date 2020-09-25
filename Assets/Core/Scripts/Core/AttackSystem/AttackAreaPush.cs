@@ -2,7 +2,7 @@
 using UnityEngine;
 using Targetable;
 
-namespace Core.Attack
+namespace Core.AttackSystem
 {
     public class AttackAreaPush : AttackArea
     {

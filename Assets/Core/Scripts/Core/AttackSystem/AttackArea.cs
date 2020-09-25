@@ -2,7 +2,7 @@
 using UnityEngine;
 using Targetable;
 
-namespace Core.Attack
+namespace Core.AttackSystem
 {
     [RequireComponent(typeof(BoxCollider2D))]
     public class AttackArea : MonoBehaviour

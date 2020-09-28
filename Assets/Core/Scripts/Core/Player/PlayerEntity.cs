@@ -162,7 +162,7 @@ namespace Player
                     _animator.SetBool("isInAir", true);
                 }
             }
-            else if (Mathf.Abs(_rigidbody2D.velocity.y) < 0.05f && _groundScanner.IsGrounded)
+            else if (_rigidbody2D.velocity.y < 0.1f && _groundScanner.IsGrounded)
             {
                 _animator.SetBool("isInAir", false);
             }

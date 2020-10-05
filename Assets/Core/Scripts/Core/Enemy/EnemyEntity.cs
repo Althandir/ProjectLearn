@@ -7,7 +7,9 @@ namespace Enemy
     [RequireComponent(typeof(HitboxEnemy), typeof(Animator), typeof(Rigidbody2D))]
     public class EnemyEntity : MonoBehaviour
     {
-        [SerializeField] int _hitpoints;
+        [SerializeField] int _maxHitpoints;
+
+        [SerializeField] int _currentHitpoints;
         [SerializeField] bool _isAlive;
         Animator _animator;
         Vector3 _initScale;
@@ -16,11 +18,11 @@ namespace Enemy
 
         public int Hitpoints
         {
-            get => _hitpoints;
+            get => _currentHitpoints;
             set
             {
-                _hitpoints += value;
-                if (_hitpoints <= 0)
+                _currentHitpoints += value;
+                if (_currentHitpoints <= 0)
                 {
                     _isAlive = false;
                     _animator.SetBool("isDead", true);
@@ -39,7 +41,7 @@ namespace Enemy
         }
         private void OnEnable()
         {
-            _hitpoints = 100;
+            _currentHitpoints = _maxHitpoints;
             _isAlive = true;
         }
         #endregion

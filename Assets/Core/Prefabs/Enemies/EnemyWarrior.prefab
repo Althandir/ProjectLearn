@@ -232,7 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521bc5a0b916d65439c4a9595deca018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitpoints: 100
+  _maxHitpoints: 100
+  _currentHitpoints: 0
   _isAlive: 0
 --- !u!50 &3439513243464933089
 Rigidbody2D:

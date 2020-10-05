@@ -7,7 +7,7 @@ namespace Core
     [CreateAssetMenu(fileName = "Settings", menuName = "GameSettings", order = 0)]
     public class GameSettings : ScriptableObject
     {
-        public static GameSettings _instance;
+        static GameSettings _instance;
 
         [SerializeField] bool Debug_loadNow;
         [SerializeField] bool Debug_clearSettingsFile;
@@ -18,6 +18,11 @@ namespace Core
         [SerializeField] string _fileName = "settings.ini";
         string _pathToSettings;
         public static GameSettings Instance { get => _instance; }
+
+        public float MasterVolume { get => _gameSettings.masterVolume; }
+        public float EffectsVolume { get => _gameSettings.effectsVolume; }
+        public float MusicVolume { get => _gameSettings.musicVolume; }
+
 
         #region Unity Messages
         private void OnEnable()
@@ -148,22 +153,6 @@ namespace Core
         }
         #endregion
 
-        #region Getter for GameSettingsContainer Values
-        public float GetMasterVolume()
-        {
-            return _gameSettings.masterVolume;
-        }
-
-        public float GetMusicVolume()
-        {
-            return _gameSettings.musicVolume;
-        }
-
-        public float GetEffectsVolume()
-        {
-            return _gameSettings.effectsVolume;
-        }
-        #endregion
     }
 
 

@@ -15,13 +15,13 @@ namespace MainMenu
             switch (_source)
             {
                 case AudioSetting.Master:
-                    slider.SetValueWithoutNotify(gameSettingsRef.GetMasterVolume());
+                    slider.SetValueWithoutNotify(gameSettingsRef.MasterVolume);
                     break;
                 case AudioSetting.Music:
-                    slider.SetValueWithoutNotify(gameSettingsRef.GetMusicVolume());
+                    slider.SetValueWithoutNotify(gameSettingsRef.MusicVolume);
                     break;
                 case AudioSetting.Effects:
-                    slider.SetValueWithoutNotify(gameSettingsRef.GetEffectsVolume());
+                    slider.SetValueWithoutNotify(gameSettingsRef.EffectsVolume);
                     break;
                 default:
                     Debug.LogWarning("AudioSliderLoader has no sourcevalue");

@@ -99,7 +99,8 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: a95e120e51d8ca44599d28b73557426a,
     type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 900576f24c922614d85c96fd62988084,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1071,16 +1072,11 @@ PrefabInstance:
     - target: {fileID: 1469172982894612549, guid: fd08406379dc49842a800d136ffb8493,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3537517
+      value: 1.9563456
       objectReference: {fileID: 0}
     - target: {fileID: 4346909847716506461, guid: fd08406379dc49842a800d136ffb8493,
         type: 3}
       propertyPath: _maxCityLife
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4346909847757944978, guid: fd08406379dc49842a800d136ffb8493,
-        type: 3}
-      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4346909848537524149, guid: fd08406379dc49842a800d136ffb8493,

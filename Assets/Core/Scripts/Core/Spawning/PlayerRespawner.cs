@@ -14,14 +14,14 @@ namespace Player.Respawner
         
         private void Start()
         {
-            PlayerEntity.Instance.OnPlayerDead.AddListener(HandlePlayerDeath);
+            PlayerEntity.Instance.PlayerDeadEvent.AddListener(HandlePlayerDeath);
             CityValues.Instance.CityDestroyedEvent.AddListener(OnCityDeath);
         }
 
         private void OnCityDeath()
         {
             this.enabled = false;
-            PlayerEntity.Instance.OnPlayerDead.RemoveListener(HandlePlayerDeath);
+            PlayerEntity.Instance.PlayerDeadEvent.RemoveListener(HandlePlayerDeath);
         }
 
         private void HandlePlayerDeath()

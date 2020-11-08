@@ -269,6 +269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 1
+  _jumpCooldown: 3
+  _jumpPower: 7.5
+  _jumpTriggerDistance: 1
   _damageValue: 20
 --- !u!1 &5363685180719773067
 GameObject:

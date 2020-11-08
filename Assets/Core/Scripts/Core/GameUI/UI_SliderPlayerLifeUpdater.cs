@@ -6,7 +6,7 @@ namespace GameUI.Sliders
     {
         protected override void Start()
         {
-            PlayerEntity.Instance.OnPlayerLifeChanged.AddListener(OnLifeChanged);
+            PlayerEntity.Instance.PlayerLifeChangedEvent.AddListener(OnLifeChanged);
 
             _slider.maxValue = PlayerEntity.Instance.MaxHitpoints;
             // Should be done somehow better :/

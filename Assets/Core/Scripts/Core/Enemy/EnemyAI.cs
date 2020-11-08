@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,19 +9,27 @@ namespace Enemy.AI
     public class EnemyAI : MonoBehaviour
     {
         [SerializeField] float _movementSpeed = 1.0f;
+        [SerializeField] float _jumpCooldown = 3.0f;
+        [SerializeField] float _jumpPower = 5;
+        [SerializeField] float _jumpTriggerDistance = 2;
         [SerializeField] int _damageValue = 20;
 
+        float _jumpTimer = 0.0f;
 
         Vector3 _initScale;
         Animator _animator;
+        Rigidbody2D _rb2D;
 
         EnemyEntity _entity;
         Attack.EnemyAttackArea _attackArea;
         Targeting.EnemyTargeting _targetingSystem;
 
         bool _xMovementActive;
+        bool _canJump;
 
         UnityEvent _StartTrackingPlayerEvent = new UnityEvent();
+
+        public bool CanJump { get => _canJump; set => _canJump = value; }
 
         #region Unity
         private void Awake()
@@ -28,14 +37,10 @@ namespace Enemy.AI
             _initScale = transform.localScale;
             _animator = GetComponent<Animator>();
             _entity = GetComponent<EnemyEntity>();
+            _rb2D = GetComponent<Rigidbody2D>();
 
             LinkToTargetingSystem();
             LinkToAttackArea();
-        }
-
-        private void Start()
-        {
-
         }
 
         private void LinkToTargetingSystem()
@@ -46,14 +51,14 @@ namespace Enemy.AI
         private void OnEnable()
         {
             StartXAxisMovement();
-            //_yjumpRoutine = StartCoroutine(JumpRoutine());
+            StartJumpRoutine();
         }
 
 
         private void OnDisable()
         {
             StopXAxisMovement();
-            //StopCoroutine(_yjumpRoutine);
+            StopJumpRoutine();
         }
         #endregion
 
@@ -94,6 +99,7 @@ namespace Enemy.AI
         void OnAttackStart()
         {
             StopXAxisMovement();
+            StopJumpRoutine();
         }
 
         void OnAttackComplete()
@@ -104,6 +110,7 @@ namespace Enemy.AI
         void OnAttackEnd()
         {
             StartXAxisMovement();
+            StartJumpRoutine();
         }
         #endregion
 
@@ -119,19 +126,70 @@ namespace Enemy.AI
             }
         }
 
-        /*
+        
         private IEnumerator JumpRoutine()
         {
-            while(true)
+            while(_entity.IsAlive)
             {
-                if (this.transform.position.y < _targetTransform.position.y || this.transform.position.y > _targetTransform.position.y)
+                _jumpTimer += Time.fixedDeltaTime;
+                if (_jumpTimer > _jumpCooldown && _canJump && JumpRequired())
                 {
-                    _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpPower);
+                    _jumpTimer = 0.0f;
+                    Jump();
                 }
+
+                InAirAnimationCheck();
                 yield return new WaitForFixedUpdate();
             }
+        }
 
-        }*/
+        bool JumpRequired()
+        {
+            if (Mathf.Abs(_targetingSystem.TargetTransform.position.y - transform.position.y) > _jumpTriggerDistance)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void InAirAnimationCheck()
+        {
+            if (Mathf.Abs(_rb2D.velocity.y) > 1f)
+            {
+                if (!_animator.GetBool("isInAir"))
+                {
+                    _animator.SetBool("isInAir", true);
+                }
+            }
+            else
+            {
+                if (_animator.GetBool("isInAir"))
+                {
+                    _animator.SetBool("isInAir", false);
+                }
+            }
+        }
+
+        void Jump()
+        {
+            _rb2D.AddForce(new Vector2(0, _jumpPower), ForceMode2D.Impulse);
+        }
+
+        void StartJumpRoutine()
+        {
+            if (_entity.IsAlive)
+            {
+                StartCoroutine(JumpRoutine());
+            }
+        }
+
+        void StopJumpRoutine()
+        {
+            if (_animator.GetBool("isInAir"))
+            {
+                _animator.SetBool("isInAir", false);
+            }
+        }
 
         void StopXAxisMovement()
         {

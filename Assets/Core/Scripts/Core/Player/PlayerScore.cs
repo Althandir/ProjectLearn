@@ -76,7 +76,7 @@ namespace Player
         }
         void LinkToPlayerEntity()
         {
-            PlayerEntity.Instance.OnPlayerDead.AddListener(HandlePlayerDeath);
+            PlayerEntity.Instance.PlayerDeadEvent.AddListener(HandlePlayerDeath);
         }
 
         #endregion
@@ -109,7 +109,7 @@ namespace Player
             _cityDestroyed = true;
             Core.City.CityGate.Instance.EnemyEnteredGateEvent.RemoveListener(HandleEnemyEnteredGate);
             Core.Spawning.WaveManager.Instance.NextWaveEvent.RemoveListener(HandleNextWave);
-            PlayerEntity.Instance.OnPlayerDead.RemoveListener(HandlePlayerDeath);
+            PlayerEntity.Instance.PlayerDeadEvent.RemoveListener(HandlePlayerDeath);
         }
         #endregion
 

@@ -31,7 +31,7 @@ namespace Player
 
 
 
-        public UnityEvent OnPlayerDead { get => _onPlayerDead; }
+        public UnityEvent PlayerDeadEvent { get => _onPlayerDead; }
         public int DamageValue { get => _damageValue; }
 
         public int Hitpoints
@@ -49,9 +49,9 @@ namespace Player
         }
 
         public static PlayerEntity Instance { get => s_PlayerEntity ;}
-        public EventInt OnPlayerLifeChanged { get => _onPlayerLifeChanged; }
+        public EventInt PlayerLifeChangedEvent { get => _onPlayerLifeChanged; }
         public int MaxHitpoints { get => _maxHitpoints; }
-        public UnityEvent OnPlayerRespawn { get => _onPlayerRespawn; }
+        public UnityEvent PlayerRespawnEvent { get => _onPlayerRespawn; }
 
 
         #region UnityMessages

@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using Player.GroundScan;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
+using System;
 
 namespace Player
 {
-    [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(PlayerInput),typeof(PlayerEntity))]
     public class PlayerControlls : MonoBehaviour
     {
         [SerializeField] InputActionAsset _Actions;
         [SerializeField] float _jumpForce = 6.5f;
         [SerializeField] float _movementSpeed = 1.0f;
 
-
+        PlayerEntity _playerEntity;
         Animator _animator;
         Rigidbody2D _rigidbody2D;
 
@@ -25,7 +27,24 @@ namespace Player
             _initialScale = transform.localScale;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+            _playerEntity = GetComponent<PlayerEntity>();
             _groundScanner = transform.GetComponentInChildren<PlayerGroundScan>();
+        }
+
+        private void Start()
+        {
+            _playerEntity.PlayerDeadEvent.AddListener(OnPlayerDead);
+            _playerEntity.PlayerRespawnEvent.AddListener(OnPlayerRespawn);
+        }
+
+        private void OnPlayerRespawn()
+        {
+            this.enabled = true;
+        }
+
+        private void OnPlayerDead()
+        {
+            this.enabled = false;
         }
 
         public void HandleMovementInput(InputAction.CallbackContext context)
@@ -35,15 +54,21 @@ namespace Player
 
         public void HandleJumpInput(InputAction.CallbackContext context)
         {
-            if (_groundScanner.IsGrounded)
+            if (this.enabled)
             {
-                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpForce);
+                if (_groundScanner.IsGrounded)
+                {
+                    _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpForce);
+                }
             }
         }
 
         public void HandleAttackInput(InputAction.CallbackContext context)
         {
-            _animator.SetTrigger("Attacking");
+            if (this.enabled)
+            {
+                _animator.SetTrigger("Attacking");
+            }
         }
 
         private void FixedUpdate()

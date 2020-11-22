@@ -9,7 +9,6 @@ namespace Player
     [RequireComponent(typeof(PlayerInput),typeof(PlayerEntity))]
     public class PlayerControlls : MonoBehaviour
     {
-        [SerializeField] InputActionAsset _Actions;
         [SerializeField] float _jumpForce = 6.5f;
         [SerializeField] float _movementSpeed = 1.0f;
 

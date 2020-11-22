@@ -122,8 +122,8 @@ namespace Player
 
         void CityDeathHandler()
         {
-            PlayerDeadHandler();
-            
+            _onPlayerDead.Invoke();
+
             _playerVirtualCamera.Priority = -1000;
         }
         #endregion

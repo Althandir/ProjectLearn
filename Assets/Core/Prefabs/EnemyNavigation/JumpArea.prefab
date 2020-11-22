@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 470621422652860901}
   - component: {fileID: 2240940208789549051}
   m_Layer: 0
-  m_Name: JumpPosition
+  m_Name: JumpArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

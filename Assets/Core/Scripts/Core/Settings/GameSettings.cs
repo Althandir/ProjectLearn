@@ -32,7 +32,7 @@ namespace Core
 
             LoadSettingsFromDisk();
         }
-
+        #if UNITY_EDITOR
         /// <summary>
         /// Debug Methods to be used inside the Unity Inspector.
         /// </summary>
@@ -66,6 +66,7 @@ namespace Core
             }
 
         }
+        #endif
         #endregion
 
         void CreatePathToSettingsIni()

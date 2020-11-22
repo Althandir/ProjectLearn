@@ -4,7 +4,7 @@ using Enemy.AI;
 namespace Enemy.Navigation
 {
     [RequireComponent(typeof(BoxCollider2D))]
-    public class Enemy_JumpPosition : MonoBehaviour
+    public class EnemyJumpArea : MonoBehaviour
     {
         private void Start()
         {

@@ -581,6 +581,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8348389463681402962, guid: b75c646f7aca844459fe1c94310f6eae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348389463681402963, guid: b75c646f7aca844459fe1c94310f6eae,
+        type: 3}
+      propertyPath: isGlobal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8348389464144976080, guid: b75c646f7aca844459fe1c94310f6eae,
         type: 3}
       propertyPath: m_Name
@@ -1148,6 +1158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2062826222}
   - component: {fileID: 2062826221}
+  - component: {fileID: 2062826223}
   m_Layer: 0
   m_Name: BGMusic
   m_TagString: Untagged
@@ -1265,6 +1276,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2062826223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062826220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b2112c986372446aa0ce492195dee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1781173328886902500
 Transform:
   m_ObjectHideFlags: 0
@@ -13352,7 +13375,7 @@ PrefabInstance:
     - target: {fileID: 7916926550106410869, guid: 10de69f7bb7a9684ea553c0b6748ff98,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5429273
+      value: 1.9798276
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10de69f7bb7a9684ea553c0b6748ff98, type: 3}

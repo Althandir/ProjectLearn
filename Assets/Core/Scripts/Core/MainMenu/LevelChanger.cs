@@ -12,7 +12,7 @@ namespace MainMenu.LevelSelection
         /// </summary>
         /// <param name="index"></param>
         public void LoadLevelbyBuildIndex(int index)
-        {
+        { 
             StartCoroutine(LoadSceneAsync(index));
         }
 

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core
 {
     [CreateAssetMenu(fileName = "Settings", menuName = "GameSettings", order = 0)]
+    [ExecuteAlways]
     public class GameSettings : ScriptableObject
     {
         static GameSettings _instance;
@@ -16,12 +18,16 @@ namespace Core
         [SerializeField] GameSettingsContainer _gameSettings = new GameSettingsContainer();
 
         [SerializeField] string _fileName = "settings.ini";
+
+        UnityEvent _musicVolumeChanged = new UnityEvent();
+
         string _pathToSettings;
         public static GameSettings Instance { get => _instance; }
 
         public float MasterVolume { get => _gameSettings.masterVolume; }
         public float EffectsVolume { get => _gameSettings.effectsVolume; }
         public float MusicVolume { get => _gameSettings.musicVolume; }
+        public UnityEvent MusicVolumeChangedEvent { get => _musicVolumeChanged; }
 
 
         #region Unity Messages
@@ -146,6 +152,7 @@ namespace Core
         public void SetMusicVolume(Single value)
         {
             _gameSettings.musicVolume = (float)Math.Round(value, 2);
+            _musicVolumeChanged.Invoke();
         }
 
         public void SetEffectsVolume(Single value)

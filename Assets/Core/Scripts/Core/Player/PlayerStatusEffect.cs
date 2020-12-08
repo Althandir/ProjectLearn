@@ -2,7 +2,6 @@
 
 namespace Player.StatusEffect
 {
-
     [CreateAssetMenu]
     public class PlayerStatusEffect : ScriptableObject
     {

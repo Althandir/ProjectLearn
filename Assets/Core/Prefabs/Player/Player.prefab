@@ -90,7 +90,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4233209815850035833}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4233209815479254536
 BoxCollider2D:
@@ -166,10 +166,11 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4233209817221517360}
-  - {fileID: 4233209817194505655}
   - {fileID: 4233209817367832534}
   - {fileID: 4233209817170630207}
   - {fileID: 4233209815479254543}
+  - {fileID: 4233209817194505655}
+  - {fileID: 3107304329552754114}
   - {fileID: 4233209816290711591}
   - {fileID: 4233209816771450982}
   m_Father: {fileID: 0}
@@ -405,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9277542b6c8609844ba62f27bab2824e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _activeEffects: []
 --- !u!1 &4233209816288704556
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4233209815850035833}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4233209816290711584
 MonoBehaviour:
@@ -592,7 +594,7 @@ Transform:
   m_Children:
   - {fileID: 4233209816288704557}
   m_Father: {fileID: 4233209815850035833}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4233209816771450981
 MonoBehaviour:
@@ -659,7 +661,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4233209815850035833}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4233209817170630200
 BoxCollider2D:
@@ -731,7 +733,7 @@ Transform:
   - {fileID: 7044493068659749794}
   - {fileID: 5928729806986769659}
   m_Father: {fileID: 4233209815850035833}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4233209817194505649
 BoxCollider2D:
@@ -942,7 +944,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4233209815850035833}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4233209817367832535
 BoxCollider2D:
@@ -997,3 +999,33 @@ MonoBehaviour:
   _OnHitParticleSystem: {fileID: 460839695281043764, guid: 5892cb1314710f94cbb42985f3c2aca3,
     type: 3}
   _particleOrigin: {fileID: 4233209817367832534}
+--- !u!1 &4722617907749773774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3107304329552754114}
+  m_Layer: 0
+  m_Name: StatusEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3107304329552754114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722617907749773774}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4233209815850035833}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

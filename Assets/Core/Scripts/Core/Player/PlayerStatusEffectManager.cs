@@ -8,39 +8,57 @@ using UnityEngine;
 
 namespace Player.StatusEffect
 {
-
     public class PlayerStatusEffectManager : MonoBehaviour
     {
         [SerializeField] List<ActiveStatusEffect> _activeEffects;
 
-        public void Activate(PlayerStatusEffect newStatusEffect)
+        private void Start()
         {
-            if (!StatusAlreadyApplied(newStatusEffect))
+            StartCoroutine(Timer());
+        }
+
+        IEnumerator Timer()
+        {
+            while (true)
             {
-                _activeEffects.Add(new ActiveStatusEffect(newStatusEffect));
+                yield return new WaitForFixedUpdate();
             }
         }
 
-        
+
+        public void Activate(PlayerStatusEffect newStatusEffect)
+        {
+            ActiveStatusEffect tmpEffect = SearchAlreadyAppliedStatus(newStatusEffect);
+            if (tmpEffect == null)
+            {
+                _activeEffects.Add(new ActiveStatusEffect(newStatusEffect));
+            }
+            else
+            {
+                tmpEffect.ResetTimer();
+            }
+        }
+
+
         /// <summary>
-        /// Checks if the new StatusEffect is already applied to the player and if so resets it's timer.
+        /// Checks if the new StatusEffect is already applied to the player and if so returns it.
         /// </summary>
         /// <param name="newStatusEffect"></param>
         /// <returns></returns>
-        bool StatusAlreadyApplied(PlayerStatusEffect newStatusEffect)
+        /// 
+        ActiveStatusEffect SearchAlreadyAppliedStatus(PlayerStatusEffect newStatusEffect)
         {
             foreach (ActiveStatusEffect activeEffect in _activeEffects)
             {
                 if (activeEffect.Effect == newStatusEffect)
                 {
-                    activeEffect.ResetTimer();
-                    return true;
+                    return activeEffect;
                 }
             }
-            return false;
+            return null;
         }
     }
-
+    
     [System.Serializable]
     class ActiveStatusEffect
     {
@@ -55,20 +73,6 @@ namespace Player.StatusEffect
             this.effect = effect;
         }
 
-        IEnumerator Timer()
-        {
-            while (!Expired())
-            {
-                yield return new WaitForFixedUpdate();
-                totalTimer += Time.fixedDeltaTime;
-                if (NextTick())
-                {
-                    ApplyEffect();
-                }
-            }
-            isExpired = true;
-        }
-
         bool NextTick()
         {
             if (totalTimer % effect.TickDuration >= effect.TickDuration)
@@ -78,7 +82,7 @@ namespace Player.StatusEffect
             return false;
         }
 
-        bool Expired()
+        public bool Expired()
         {
             if (totalTimer > effect.TotalDurationInSeconds)
             {
@@ -97,7 +101,7 @@ namespace Player.StatusEffect
             Debug.Log("Apply Effect to Player!");
         }
     }
-
+    
 
 
 }

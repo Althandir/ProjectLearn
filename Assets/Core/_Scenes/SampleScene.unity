@@ -641,13 +641,14 @@ GameObject:
   m_Component:
   - component: {fileID: 946633682}
   - component: {fileID: 946633681}
+  - component: {fileID: 946633683}
   m_Layer: 0
   m_Name: BGMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &946633681
 AudioSource:
   m_ObjectHideFlags: 0
@@ -758,6 +759,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946633683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946633680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b2112c986372446aa0ce492195dee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,13 +1085,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 518819105273826056, guid: fd08406379dc49842a800d136ffb8493,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.99
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 518819105273826056, guid: fd08406379dc49842a800d136ffb8493,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 939214495844400374, guid: fd08406379dc49842a800d136ffb8493,
         type: 3}
@@ -1098,12 +1111,7 @@ PrefabInstance:
     - target: {fileID: 1469172982894612549, guid: fd08406379dc49842a800d136ffb8493,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8460025
-      objectReference: {fileID: 0}
-    - target: {fileID: 3414776261071312706, guid: fd08406379dc49842a800d136ffb8493,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
+      value: 1.9798276
       objectReference: {fileID: 0}
     - target: {fileID: 4346909847005205579, guid: fd08406379dc49842a800d136ffb8493,
         type: 3}
@@ -2964,6 +2972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.5416667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502090665768005823, guid: fd08406379dc49842a800d136ffb8493,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5269562843619074479, guid: fd08406379dc49842a800d136ffb8493,
         type: 3}

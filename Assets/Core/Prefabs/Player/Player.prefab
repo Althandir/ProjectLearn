@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 3963886310245590144}
   - component: {fileID: 7616332201485940763}
   - component: {fileID: 8550891004499335719}
-  - component: {fileID: 4100768898896625405}
+  - component: {fileID: 3483138695878181448}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpForce: 7.5
   _movementSpeed: 1
---- !u!114 &4100768898896625405
+--- !u!114 &3483138695878181448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,10 +403,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4233209815850035839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9277542b6c8609844ba62f27bab2824e, type: 3}
+  m_Script: {fileID: 11500000, guid: 41c909f94fb6b4741be904fbcba8117c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeEffects: []
+  _playerEntity: {fileID: 4233209815850035780}
+  _statusEffectsObject: {fileID: 4722617907749773774}
 --- !u!1 &4233209816288704556
 GameObject:
   m_ObjectHideFlags: 0

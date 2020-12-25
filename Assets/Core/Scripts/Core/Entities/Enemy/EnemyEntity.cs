@@ -5,18 +5,14 @@ using UnityEngine.Events;
 namespace Enemy
 {
     [RequireComponent(typeof(HitboxEnemy), typeof(Animator), typeof(Rigidbody2D))]
-    public class EnemyEntity : MonoBehaviour
+    public class EnemyEntity : Core.Entity
     {
-        [SerializeField] int _maxHitpoints;
-
-        [SerializeField] int _currentHitpoints;
         [SerializeField] bool _isAlive;
-        Animator _animator;
         Vector3 _initScale;
 
         UnityEvent _OnKilledEvent = new UnityEvent();
 
-        public int Hitpoints
+        public override int Hitpoints
         {
             get => _currentHitpoints;
             set

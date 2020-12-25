@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Player.StatusEffect;
+using Core.StatusEffect;
 
 namespace Triggerzone.Powerups
 {
     public class Powerup : Triggerzone
     {
-        [SerializeField] List<PlayerStatusEffect> _StatusToActivate;
+        [SerializeField] List<SingleStatusEffect> _StatusToActivate;
         protected override void Activate(Transform playerTransform)
         {
-            foreach (PlayerStatusEffect statusEffect in _StatusToActivate)
+            foreach (SingleStatusEffect statusEffect in _StatusToActivate)
             {
-                playerTransform.GetComponent<PlayerStatusEffectManager>().Activate(statusEffect);
+                playerTransform.GetComponent<StatusEffectManager>().Activate(statusEffect);
             }
             Destroy(this.gameObject);
         }

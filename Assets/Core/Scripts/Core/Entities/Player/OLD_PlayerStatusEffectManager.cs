@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using Core.StatusEffect;
 
 /// <summary>
 /// TODO: Finish BuffSystem
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace Player.StatusEffect
 {
-    public class PlayerStatusEffectManager : MonoBehaviour
+    public class OLD_PlayerStatusEffectManager : MonoBehaviour
     {
         [SerializeField] List<ActiveStatusEffect> _activeEffects;
 
@@ -26,7 +27,7 @@ namespace Player.StatusEffect
         }
 
 
-        public void Activate(PlayerStatusEffect newStatusEffect)
+        public void Activate(SingleStatusEffect newStatusEffect)
         {
             ActiveStatusEffect tmpEffect = SearchAlreadyAppliedStatus(newStatusEffect);
             if (tmpEffect == null)
@@ -46,7 +47,7 @@ namespace Player.StatusEffect
         /// <param name="newStatusEffect"></param>
         /// <returns></returns>
         /// 
-        ActiveStatusEffect SearchAlreadyAppliedStatus(PlayerStatusEffect newStatusEffect)
+        ActiveStatusEffect SearchAlreadyAppliedStatus(SingleStatusEffect newStatusEffect)
         {
             foreach (ActiveStatusEffect activeEffect in _activeEffects)
             {
@@ -62,13 +63,13 @@ namespace Player.StatusEffect
     [System.Serializable]
     class ActiveStatusEffect
     {
-        [SerializeField] PlayerStatusEffect effect;
+        [SerializeField] SingleStatusEffect effect;
         [SerializeField] float totalTimer = 0.0f;
         [SerializeField] bool isExpired = false;
 
-        public PlayerStatusEffect Effect { get => effect;}
+        public SingleStatusEffect Effect { get => effect;}
 
-        public ActiveStatusEffect(PlayerStatusEffect effect)
+        public ActiveStatusEffect(SingleStatusEffect effect)
         {
             this.effect = effect;
         }

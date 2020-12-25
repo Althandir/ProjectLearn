@@ -6,7 +6,7 @@ namespace Triggerzone
     /// BaseClass for Powerups & Traps. 
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
-    public class Triggerzone : MonoBehaviour
+    public abstract class Triggerzone : MonoBehaviour
     {
         [SerializeField] Target _target;
 

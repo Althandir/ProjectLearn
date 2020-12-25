@@ -27,7 +27,6 @@ namespace Core.Spawning
         {
             CheckForPrerequisites();
         }
-
         void CheckForPrerequisites()
         {
             if (!_EnemyPrefab)

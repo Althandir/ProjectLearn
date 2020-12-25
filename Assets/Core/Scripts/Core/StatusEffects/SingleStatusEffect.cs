@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Player.StatusEffect
+namespace Core.StatusEffect
 {
     [CreateAssetMenu]
-    public class PlayerStatusEffect : ScriptableObject
+    public class SingleStatusEffect : ScriptableObject
     {
         [SerializeField] TargetValue _targetValue;
         [SerializeField] float _value;

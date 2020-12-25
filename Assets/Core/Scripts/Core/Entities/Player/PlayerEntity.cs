@@ -6,20 +6,14 @@ using UnityEngine.Events;
 namespace Player
 {
     [RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
-    public class PlayerEntity : MonoBehaviour
+    public class PlayerEntity : Core.Entity
     {
         static PlayerEntity s_PlayerEntity;
-
-        [SerializeField] int _maxHitpoints = 100;
-        [SerializeField] int _hitpoints; 
 
         [SerializeField] int _damageValue = 25;
 
         [SerializeField] AttackArea _attackArea;
         [SerializeField] Cinemachine.CinemachineVirtualCamera _playerVirtualCamera;
-
-        Animator _animator;
-
 
         EventInt _onPlayerLifeChanged = new EventInt();
         UnityEvent _onPlayerDead = new UnityEvent();
@@ -29,19 +23,17 @@ namespace Player
 
         Rigidbody2D _rigidbody2D;
 
-
-
         public UnityEvent PlayerDeadEvent { get => _onPlayerDead; }
         public int DamageValue { get => _damageValue; }
 
-        public int Hitpoints
+        public override int Hitpoints
         {
-            get => _hitpoints;
+            get => _currentHitpoints;
             set
             {
-                _hitpoints += value;
-                _onPlayerLifeChanged.Invoke(_hitpoints);
-                if (_hitpoints <= 0)
+                _currentHitpoints += value;
+                _onPlayerLifeChanged.Invoke(_currentHitpoints);
+                if (_currentHitpoints <= 0)
                 {
                     _onPlayerDead.Invoke();
                 }
@@ -58,6 +50,8 @@ namespace Player
         private void Awake()
         {
             CreateSingleton();
+
+            _currentHitpoints = _maxHitpoints;
 
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _groundScanner = transform.GetComponentInChildren<PlayerGroundScan>();

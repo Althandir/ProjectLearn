@@ -918,6 +918,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1196338125212027257, guid: 9a1087c7f68a7ec44af1a04f38338cb6,
+        type: 3}
+      propertyPath: m_Name
+      value: StatusEffects
+      objectReference: {fileID: 0}
     - target: {fileID: 7759496818632929425, guid: 9a1087c7f68a7ec44af1a04f38338cb6,
         type: 3}
       propertyPath: m_IsActive
@@ -983,9 +988,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSystem
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6648924683340409481, guid: 9a1087c7f68a7ec44af1a04f38338cb6, type: 3}
-    - {fileID: 6512939262417385618, guid: 9a1087c7f68a7ec44af1a04f38338cb6, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a1087c7f68a7ec44af1a04f38338cb6, type: 3}
 --- !u!1001 &1781173328916290388
 PrefabInstance:

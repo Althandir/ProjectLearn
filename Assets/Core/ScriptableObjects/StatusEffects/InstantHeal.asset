@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fd9b755dcba5c346b4cbe45efc8fb75, type: 3}
+  m_Script: {fileID: 11500000, guid: d898e33c0ef94b84fbf8d248132ce58f, type: 3}
   m_Name: InstantHeal
   m_EditorClassIdentifier: 
   _targetValue: 0

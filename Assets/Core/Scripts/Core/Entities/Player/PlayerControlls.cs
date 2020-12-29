@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-using Player.GroundScan;
+﻿using Player.GroundScan;
+using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
-using System;
 
 namespace Player
 {

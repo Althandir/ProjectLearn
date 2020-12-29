@@ -29,15 +29,25 @@ namespace Player
         public override int Hitpoints
         {
             get => _currentHitpoints;
+            /*
             set
             {
-                _currentHitpoints += value;
+                if (_currentHitpoints + value > MaxHitpoints)
+                {
+                    _currentHitpoints = MaxHitpoints;
+                }
+                else
+                {
+                    _currentHitpoints += value;
+                }
+
                 _onPlayerLifeChanged.Invoke(_currentHitpoints);
                 if (_currentHitpoints <= 0)
                 {
                     _onPlayerDead.Invoke();
                 }
             }
+            */
         }
 
         public static PlayerEntity Instance { get => s_PlayerEntity ;}
@@ -45,6 +55,43 @@ namespace Player
         public int MaxHitpoints { get => _maxHitpoints; }
         public UnityEvent PlayerRespawnEvent { get => _onPlayerRespawn; }
 
+        #region Hitpoint functions
+
+        public override void EntityDeathHandler()
+        {
+            _onPlayerDead.Invoke();
+        }
+
+        public override void AddHitpoints(int value)
+        {
+            base.AddHitpoints(value);
+            _onPlayerLifeChanged.Invoke(_currentHitpoints);
+        }
+
+        public override void DecreaseHitpoints(int value)
+        {
+            base.DecreaseHitpoints(value);
+            _onPlayerLifeChanged.Invoke(_currentHitpoints);
+        }
+
+        public override void MultiplyHitpoints(float value)
+        {
+            base.MultiplyHitpoints(value);
+            _onPlayerLifeChanged.Invoke(_currentHitpoints);
+        }
+
+        public override void DivideHitpoints(float value)
+        {
+            base.DivideHitpoints(value);
+            _onPlayerLifeChanged.Invoke(_currentHitpoints);
+        }
+
+        public override void SetHitpoints(int value)
+        {
+            base.SetHitpoints(value);
+            _onPlayerLifeChanged.Invoke(_currentHitpoints);
+        }
+        #endregion
 
         #region UnityMessages
         private void Awake()
@@ -127,7 +174,7 @@ namespace Player
         {
             _onPlayerRespawn.Invoke();
             _animator.SetBool("isDead", false);
-            Hitpoints = _maxHitpoints;
+            SetHitpoints(_maxHitpoints);
             _rigidbody2D.gravityScale = 1;
         }
         #endregion
@@ -167,9 +214,10 @@ namespace Player
         {
             _attackArea.OnAttack(_damageValue);
         }
+
         #endregion
 
-      
+
     }
 }
 

@@ -18,13 +18,13 @@ namespace Targetable
         override public void OnHit(int damageValue)
         {
             base.OnHit(damageValue);
-            _entity.Hitpoints = -damageValue;
+            _entity.DecreaseHitpoints(damageValue);
         }
 
         public override void OnHit(int damageValue, Vector2 pushDirection)
         {
             base.OnHit(damageValue, pushDirection);
-            _entity.Hitpoints = -damageValue;
+            _entity.DecreaseHitpoints(damageValue);
             _rb2D.AddForce(pushDirection, ForceMode2D.Force);
         }
     }

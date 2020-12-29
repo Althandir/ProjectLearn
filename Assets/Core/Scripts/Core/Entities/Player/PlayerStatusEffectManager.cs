@@ -1,23 +1,19 @@
-﻿using Core.StatusEffect;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Player.StatusEffect
+namespace Core.StatusEffect
 {
     /// <summary>
     /// Class used to enable different statuseffects on the player
     /// </summary>
     public class PlayerStatusEffectManager : StatusEffectManager
     {
-        [SerializeField] PlayerEntity _playerEntity;
-        [SerializeField] GameObject _statusEffectsObject;
+        [SerializeField] Player.PlayerEntity _playerEntity;
 
-        /// <summary>
-        /// Adds a new Statuseffect on the effects object to influence the player
-        /// </summary>
-        /// <param name="effect"></param>
-        public override void Activate(SingleStatusEffect effect)
+        public override void AddNewEffect(SingleStatusEffect effect)
         {
-            // TODO!
+            ActiveStatusEffect newStatusEffect = (ActiveStatusEffect) _statusEffectsObject.AddComponent(typeof(ActiveStatusEffect));
+            newStatusEffect.Initialize(effect, _playerEntity);
+            Debug.Log("Added new Status on Player!");
         }
 
         #region Unity Messages
@@ -32,7 +28,6 @@ namespace Player.StatusEffect
                 Debug.LogError("Missing StatusEffectObject in " + typeof(PlayerStatusEffectManager).Name);
             }
         }
-
         #endregion
     }
 }

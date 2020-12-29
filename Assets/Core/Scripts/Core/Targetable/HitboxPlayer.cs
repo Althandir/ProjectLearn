@@ -13,7 +13,7 @@ namespace Targetable
         override public void OnHit(int damageValue)
         {
             base.OnHit(damageValue);
-            _entity.Hitpoints = -damageValue;
+            _entity.DecreaseHitpoints(damageValue);
         }
     }
 }

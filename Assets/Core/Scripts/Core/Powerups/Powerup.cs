@@ -11,7 +11,7 @@ namespace Triggerzone.Powerups
         {
             foreach (SingleStatusEffect statusEffect in _StatusToActivate)
             {
-                playerTransform.GetComponent<StatusEffectManager>().Activate(statusEffect);
+                playerTransform.GetComponent<StatusEffectManager>().AddNewEffect(statusEffect);
             }
             Destroy(this.gameObject);
         }

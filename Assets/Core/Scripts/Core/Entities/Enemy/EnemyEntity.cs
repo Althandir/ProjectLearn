@@ -15,19 +15,41 @@ namespace Enemy
         public override int Hitpoints
         {
             get => _currentHitpoints;
+            /*
             set
             {
-                _currentHitpoints += value;
+                if (_currentHitpoints + value > _maxHitpoints)
+                {
+                    _currentHitpoints = _maxHitpoints;
+                }
+                else
+                {
+                    _currentHitpoints += value;
+                }
+
                 if (_currentHitpoints <= 0)
                 {
                     _isAlive = false;
                     _animator.SetBool("isDead", true);
                 }
             }
+            */
         }
 
         public bool IsAlive { get => _isAlive; }
         public UnityEvent OnKilledEvent { get => _OnKilledEvent; }
+
+        public override void EntityDeathHandler()
+        {
+            _isAlive = false;
+            _animator.SetBool("isDead", true);
+        }
+        
+        public void DisableEntity()
+        {
+            this.gameObject.SetActive(false);
+            _OnKilledEvent.Invoke();
+        }
 
         #region Unity Messages
         private void Awake()
@@ -42,10 +64,5 @@ namespace Enemy
         }
         #endregion
 
-        public void DisableEntity()
-        {
-            this.gameObject.SetActive(false);
-            _OnKilledEvent.Invoke();
-        }
     }
 }

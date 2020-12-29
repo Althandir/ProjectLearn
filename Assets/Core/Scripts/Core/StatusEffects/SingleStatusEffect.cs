@@ -5,20 +5,20 @@ namespace Core.StatusEffect
     [CreateAssetMenu]
     public class SingleStatusEffect : ScriptableObject
     {
-        [SerializeField] TargetValue _targetValue;
+        [SerializeField] ModifiedValue _modifiedValue;
         [SerializeField] float _value;
         [SerializeField] ModifierAction _action;
         [SerializeField] float _totalDurationInSeconds;
         [SerializeField] float _tickDuration;
 
         public float Value { get => _value; }
-        public TargetValue TargetValue { get => _targetValue; }
+        public ModifiedValue modifiedValue { get => _modifiedValue; }
         public ModifierAction Action { get => _action;  }
         public float TotalDurationInSeconds { get => _totalDurationInSeconds;}
         public float TickDuration { get => _tickDuration; }
     }
 
-    public enum TargetValue
+    public enum ModifiedValue
     {
         Health
     }

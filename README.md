@@ -7,15 +7,14 @@ My Personal Project to learn elements of Unity. 2D Game mix of a Towerdefense &a
 ### MainMenu Settings 
 ![MainMenuSettingsAudio](https://github.com/Althandir/ProjectLearn/blob/master/Screenshots/MainMenuAudioSettings.PNG?raw=true)
 currently just Audio
+____________________________
 ## Game
 ![Combat01](https://github.com/Althandir/ProjectLearn/blob/master/Screenshots/Combat01.PNG?raw=true)
 Some Combat.
-
-
+____________________________
 ![EnemyEnteredGate](https://github.com/Althandir/ProjectLearn/blob/master/Screenshots/EnemyEnteredGate.PNG?raw=true)
 An Enemy reached the gate and the City loses life.
-
-
+____________________________
 ![PlayerDead](https://github.com/Althandir/ProjectLearn/blob/master/Screenshots/PlayerDead01.PNG?raw=true)
 The Player dies.
-
+____________________________

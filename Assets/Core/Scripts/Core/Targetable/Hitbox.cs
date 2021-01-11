@@ -3,7 +3,7 @@ namespace Targetable
 {
     // Baseclass for HitableObjects
     [RequireComponent(typeof(BoxCollider2D))]
-    public class Hitbox : MonoBehaviour
+    public abstract class Hitbox : MonoBehaviour
     {
         [SerializeField] protected GameObject _OnHitParticleSystem;
         [SerializeField] protected Transform _particleOrigin;

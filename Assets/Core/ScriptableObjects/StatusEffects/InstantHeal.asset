@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d898e33c0ef94b84fbf8d248132ce58f, type: 3}
   m_Name: InstantHeal
   m_EditorClassIdentifier: 
-  _targetValue: 0
+  _modifiedValue: 0
   _value: 20
   _action: 0
   _totalDurationInSeconds: 0
   _tickDuration: 0
+  _particleSystemPrefab: {fileID: 3477110388400468455, guid: 600ca474af46ed94a87c18470f5f59f0,
+    type: 3}

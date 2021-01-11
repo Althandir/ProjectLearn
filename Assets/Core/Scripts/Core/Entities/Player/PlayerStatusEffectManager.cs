@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Core.StatusEffect
 {
@@ -12,7 +13,7 @@ namespace Core.StatusEffect
         public override void AddNewEffect(SingleStatusEffect effect)
         {
             ActiveStatusEffect newStatusEffect = (ActiveStatusEffect) _statusEffectsObject.AddComponent(typeof(ActiveStatusEffect));
-            newStatusEffect.Initialize(effect, _playerEntity);
+            newStatusEffect.Initialize(effect, _playerEntity, _statusEffectsParticleTransform);
             Debug.Log("Added new Status on Player!");
         }
 
@@ -26,6 +27,17 @@ namespace Core.StatusEffect
             if (!_statusEffectsObject)
             {
                 Debug.LogError("Missing StatusEffectObject in " + typeof(PlayerStatusEffectManager).Name);
+            }
+
+            _playerEntity.PlayerDeadEvent.AddListener(OnPlayerDead);
+        }
+
+        private void OnPlayerDead()
+        {
+            ActiveStatusEffect[] activeStatusEffects = _statusEffectsObject.GetComponents<ActiveStatusEffect>();
+            foreach (ActiveStatusEffect effect in activeStatusEffects)
+            {
+                effect.RemoveStatusEffect();
             }
         }
         #endregion

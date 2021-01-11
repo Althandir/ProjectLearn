@@ -10,6 +10,7 @@ namespace Core.StatusEffect
     public abstract class StatusEffectManager : MonoBehaviour
     {
         [SerializeField] protected GameObject _statusEffectsObject;
+        [SerializeField] protected Transform _statusEffectsParticleTransform;
         /// <summary>
         /// Adds a new ActiveStatuseffect on the StatusEffectObjectHolder which will influence the entity
         /// </summary>

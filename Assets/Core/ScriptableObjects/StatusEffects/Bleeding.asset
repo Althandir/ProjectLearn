@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d898e33c0ef94b84fbf8d248132ce58f, type: 3}
-  m_Name: ContinuousHeal
+  m_Name: Bleeding
   m_EditorClassIdentifier: 
   _modifiedValue: 0
-  _value: 2
-  _action: 0
-  _totalDurationInSeconds: 10
+  _value: 1
+  _action: 1
+  _totalDurationInSeconds: 5
   _tickDuration: 1
-  _particleSystemPrefab: {fileID: 3477110388400468455, guid: 600ca474af46ed94a87c18470f5f59f0,
+  _particleSystemPrefab: {fileID: 7700595167994551961, guid: 973971ad56323184183fb34d6c579fd7,
     type: 3}

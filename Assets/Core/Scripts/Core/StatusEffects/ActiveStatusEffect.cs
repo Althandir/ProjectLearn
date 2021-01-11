@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Core.StatusEffect
 {
@@ -14,15 +14,59 @@ namespace Core.StatusEffect
         [SerializeField] Entity _target;
         [SerializeField] SingleStatusEffect _effect;
         [SerializeField] float _timer;
+        [SerializeField] ParticleSystem _particleSystem;
 
-        public void Initialize(SingleStatusEffect effect, Entity target)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="effect">Values of the StatusEffect</param>
+        /// <param name="target">Entity to be affected by the StatusEffect</param>
+        /// <param name="particlesParentTransform">Transform which will hold the particleSystem created by this StatusEffect</param>
+        public void Initialize(SingleStatusEffect effect, Entity target, Transform particlesParentTransform)
         {
             _effect = effect;
             _target = target;
 
+            InitParticleSystem(particlesParentTransform, target);
             StartCoroutine(StatusEffectRoutine());
         }
 
+        private void InitParticleSystem(Transform particlesParent, Entity target)
+        {
+            if (!particlesParent)
+            {
+                Debug.LogError("Missing particleParentObject for " + target.name);
+            }
+
+            if (!_effect.ParticleSystem)
+            {
+                Debug.LogWarning("No ParticleSystem found for " + _effect.name);
+            }
+            else
+            {
+                _particleSystem = Instantiate(_effect.ParticleSystem, particlesParent).GetComponent<ParticleSystem>();
+            }
+        }
+
+        /// <summary>
+        /// Disables the corresponding ParticleSystem by setting the StopAction to Destroy 
+        /// and disabling the looping of the ParticleSystem.
+        /// </summary>
+        private void DisableParticleSystem()
+        {
+            if (_particleSystem)
+            {
+                ParticleSystem.MainModule main = _particleSystem.main;
+                main.stopAction = ParticleSystemStopAction.Destroy;
+                main.loop = false;
+                // _particleSystem.main.loop = false; << don't work
+            }
+        }
+
+        /// <summary>
+        /// MainRoutine of the StatusEffect. Started after Initilize. <see cref="Initialize(SingleStatusEffect, Entity, Transform)"/>
+        /// </summary>
+        /// <returns></returns>
         IEnumerator StatusEffectRoutine()
         {
             if (_effect.TotalDurationInSeconds == 0)
@@ -40,7 +84,7 @@ namespace Core.StatusEffect
                     }
                 }
             }
-            Destroy(this);
+            RemoveStatusEffect();
         }
 
         private void ApplyEffect()
@@ -54,31 +98,26 @@ namespace Core.StatusEffect
                             case ModifierAction.Add:
                                 {
                                     _target.AddHitpoints((int) _effect.Value);
-                                    Debug.Log("Added " +_effect.Value + " Life!");
                                 }
                                 break;
                             case ModifierAction.Subtract:
                                 {
                                     _target.DecreaseHitpoints((int)_effect.Value);
-                                    Debug.Log("Removed Life!");
                                 }
                                 break;
                             case ModifierAction.Multiply:
                                 {
                                     _target.MultiplyHitpoints(_effect.Value);
-                                    Debug.Log("Multiplied Life!");
                                 }
                                 break;
                             case ModifierAction.Divide:
                                 {
                                     _target.DivideHitpoints(_effect.Value);
-                                    Debug.Log("Divided Life!");
                                 }
                                 break;
                             case ModifierAction.Set:
                                 {
                                     _target.SetHitpoints((int)_effect.Value);
-                                    Debug.Log("Set Life!");
                                 }
                                 break;
                             default:
@@ -101,10 +140,20 @@ namespace Core.StatusEffect
         {
             if (Mathf.Approximately(_timer % _effect.TickDuration, 0.0f))
             {
-                Debug.Log("Next Tick!");
                 return true;
             }
             return false;
         }
+
+        /// <summary>
+        /// Method is called when Entity dies or the StatusEffect is expired
+        /// </summary>
+        public void RemoveStatusEffect()
+        {
+            StopAllCoroutines();
+            DisableParticleSystem();
+            Destroy(this);
+        }
+
     }
 }

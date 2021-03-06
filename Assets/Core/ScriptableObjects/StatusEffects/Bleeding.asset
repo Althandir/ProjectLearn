@@ -15,7 +15,7 @@ MonoBehaviour:
   _modifiedValue: 0
   _value: 1
   _action: 1
-  _totalDurationInSeconds: 5
+  _totalDurationInSeconds: 10
   _tickDuration: 1
   _particleSystemPrefab: {fileID: 7700595167994551961, guid: 973971ad56323184183fb34d6c579fd7,
     type: 3}

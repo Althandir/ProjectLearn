@@ -9,12 +9,13 @@ namespace Core.StatusEffect
     public class PlayerStatusEffectManager : StatusEffectManager
     {
         [SerializeField] Player.PlayerEntity _playerEntity;
+        [SerializeField] 
 
         public override void AddNewEffect(SingleStatusEffect effect)
         {
             ActiveStatusEffect newStatusEffect = (ActiveStatusEffect) _statusEffectsObject.AddComponent(typeof(ActiveStatusEffect));
             newStatusEffect.Initialize(effect, _playerEntity, _statusEffectsParticleTransform);
-            Debug.Log("Added new Status on Player!");
+
         }
 
         #region Unity Messages

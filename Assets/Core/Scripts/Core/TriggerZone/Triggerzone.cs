@@ -63,7 +63,7 @@ namespace Triggerzone
     /// <summary>
     /// Enum to differentiate between possible Targets
     /// </summary>
-    enum Target
+    public enum Target
     {
         Enemy, Player
     }

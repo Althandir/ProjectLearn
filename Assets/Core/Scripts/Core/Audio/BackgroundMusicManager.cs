@@ -14,7 +14,12 @@ namespace Core.Audio
         {
             _source = GetComponent<AudioSource>();
             GameSettings.Instance.MusicVolumeChangedEvent.AddListener(OnVolumeChange);
-    }
+        }
+
+        private void Start()
+        {
+            _source.volume = GameSettings.Instance.MusicVolume * GameSettings.Instance.MasterVolume;
+        }
 
         private void OnVolumeChange()
         {

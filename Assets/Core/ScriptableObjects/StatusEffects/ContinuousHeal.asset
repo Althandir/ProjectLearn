@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ContinuousHeal
   m_EditorClassIdentifier: 
   _modifiedValue: 0
-  _value: 2
+  _value: 1
   _action: 0
   _totalDurationInSeconds: 10
   _tickDuration: 1

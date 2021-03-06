@@ -62,6 +62,9 @@ namespace Enemy.AI.Targeting
             }
         }
 
+        /// <summary>
+        /// Sets the target to the Gate.
+        /// </summary>
         private void TargetGate()
         {
             if (_targetTransform != Core.City.CityGate.Instance.transform)
@@ -70,6 +73,9 @@ namespace Enemy.AI.Targeting
             }
         }
 
+        /// <summary>
+        /// Sets the target to the Player.
+        /// </summary>
         private void TargetPlayer()
         {
             if (_targetTransform != Player.PlayerEntity.Instance.transform)

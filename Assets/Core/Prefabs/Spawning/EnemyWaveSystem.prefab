@@ -47,7 +47,7 @@ MonoBehaviour:
     type: 3}
   _spawnPostitions:
   - {fileID: 1781173329731328440}
-  _maxEnemyCount: 2
+  _maxEnemyCount: 3
   _minSpawnDelaySec: 1
   _maxSpawnDelaySec: 1
   _enemyCountMultiplicator: 1.5
@@ -141,6 +141,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -222,6 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawners: []
-  _startDelaySec: 45
+  _startDelaySec: 5
   _inPreperationPhase: 0
   _waveCounter: 0

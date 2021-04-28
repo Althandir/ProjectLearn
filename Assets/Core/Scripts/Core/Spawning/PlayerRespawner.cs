@@ -11,7 +11,7 @@ namespace Player.Respawner
         [SerializeField] float _respawnDelay = 3.0f;
         [SerializeField] float _timeCounter = 0.0f;
         bool _isRespawning;
-        
+        bool _isAllowedToRespawn = true;
         private void Start()
         {
             PlayerEntity.Instance.PlayerDeadEvent.AddListener(HandlePlayerDeath);
@@ -21,6 +21,7 @@ namespace Player.Respawner
         private void OnCityDeath()
         {
             this.enabled = false;
+            _isAllowedToRespawn = false;
             PlayerEntity.Instance.PlayerDeadEvent.RemoveListener(HandlePlayerDeath);
         }
 
@@ -40,13 +41,16 @@ namespace Player.Respawner
                 _timeCounter += Time.fixedDeltaTime;
                 yield return new WaitForFixedUpdate();
             }
-            
-            PlayerEntity.Instance.transform.position = _spawnPositions[UnityEngine.Random.Range(0,_spawnPositions.Count-1)].position;
-            PlayerEntity.Instance.Respawn();
-            PlayerEntity.Instance.enabled = true;
 
-            _timeCounter = 0.0f;
-            _isRespawning = false;
+            if (_isAllowedToRespawn)
+            {
+                PlayerEntity.Instance.transform.position = _spawnPositions[UnityEngine.Random.Range(0, _spawnPositions.Count - 1)].position;
+                PlayerEntity.Instance.Respawn();
+                PlayerEntity.Instance.enabled = true;
+
+                _timeCounter = 0.0f;
+                _isRespawning = false;
+            }
         }
     }
 }

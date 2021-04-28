@@ -8,47 +8,50 @@ namespace Lights
     {
         protected Light2D _light;
         [SerializeField]
-        [Range(0.1f,5)] 
+        [Range(0.1f,10)] 
         protected float _changeSpeed = 1;
 
         [SerializeField]
-        [Range(0.1f, 10)]
+        [Range(2f, 10)]
         protected float _maxIntensity = 1;
         [SerializeField]
-        [Range(0.001f, 1)]
+        [Range(0f, 8)]
         protected float _minIntensity = 0.1f;
 
         [SerializeField]
         protected bool _randomizeStart = false;
         [SerializeField]
-        protected float _startSeed = 0;
-        protected float _differenceBetweenBothIntensities;
+        protected int _startSeed = 0;
+        protected float _valueBetweenBothIntensities;
 
         virtual protected void Awake()
         {
             _light = GetComponent<Light2D>();
-            _differenceBetweenBothIntensities = _maxIntensity - _minIntensity;
+            _valueBetweenBothIntensities = _maxIntensity - 1;
 
             if (_randomizeStart)
             {
-                _startSeed = Random.Range(0f, 1000f);
+                _startSeed = Random.Range(0, 1000);
             }
         }
 
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            if (_minIntensity > _maxIntensity)
+            if (_maxIntensity - 2 != _minIntensity + 2)
             {
-                _maxIntensity = _minIntensity;
+                _minIntensity = _maxIntensity - 2;
             }
-            _differenceBetweenBothIntensities = _maxIntensity - _minIntensity;
+            if (_minIntensity+2 != _maxIntensity)
+            {
+                _maxIntensity = _minIntensity+2;
+            }
         }
 #endif
 
         private void FixedUpdate()
         {
-            float newLightIntensityValue = (Mathf.Abs(Mathf.Sin((_startSeed + Time.time) * _changeSpeed) * _differenceBetweenBothIntensities)) + _minIntensity;
+            float newLightIntensityValue = Mathf.Sin((_startSeed + Time.time) * _changeSpeed) + _valueBetweenBothIntensities;
             if (newLightIntensityValue < _maxIntensity && newLightIntensityValue > _minIntensity)
             {
                 _light.intensity = newLightIntensityValue;

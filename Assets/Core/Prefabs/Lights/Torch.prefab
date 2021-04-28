@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LightType: 3
-  m_BlendStyleIndex: 0
+  m_BlendStyleIndex: 1
   m_FalloffIntensity: 0.6
   m_Color: {r: 0.7735849, g: 0.58914363, b: 0.105820596, a: 1}
-  m_Intensity: 1.125
+  m_Intensity: 2
   m_LightVolumeOpacity: 0.2
   m_ApplyToSortingLayers: 1d0d44eb95eaf0e945d7d27fd526fe27
   m_LightCookieSprite: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 1
   m_PointLightInnerAngle: 200
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.4
+  m_PointLightInnerRadius: 0.125
   m_PointLightOuterRadius: 3
   m_PointLightDistance: 1
   m_PointLightQuality: 1
@@ -85,11 +85,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183d3434df19e024b8daf21ae7a7dfed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeSpeed: 0.125
-  _maxIntensity: 1.125
-  _minIntensity: 0.5
+  _changeSpeed: 0.5
+  _maxIntensity: 3
+  _minIntensity: 1
   _randomizeStart: 1
-  _seed: 0
+  _startSeed: 0
 --- !u!1 &8553492075090630479
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +138,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:

@@ -50,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -170,9 +171,9 @@ MonoBehaviour:
   m_LightType: 1
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 1, g: 0.7229444, b: 0, a: 1}
-  m_Intensity: 1
-  m_LightVolumeOpacity: 0.4
+  m_Color: {r: 1, g: 0.761323, b: 0, a: 1}
+  m_Intensity: 3
+  m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 1d0d44eb95eaf0e945d7d27fd526fe27
   m_LightCookieSprite: {fileID: 21300008, guid: ae3918a914038694d852d0bb81f62473,
     type: 3}
@@ -185,12 +186,12 @@ MonoBehaviour:
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 1
-  m_PointLightDistance: 3
+  m_PointLightDistance: 10
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 4
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 3
+  m_ShapeLightFalloffSize: 2
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.25, y: -0.55, z: 0}
@@ -212,11 +213,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def60f452f3b28242ae7aaaafa2fa578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeSpeed: 0.125
-  _maxIntensity: 2
-  _minIntensity: 1
-  _randomizeStart: 0
-  _seed: 0
+  _changeSpeed: 1
+  _maxIntensity: 5
+  _minIntensity: 3
+  _randomizeStart: 1
+  _startSeed: 0
   _onEnemyEnteredColorChangeDuration: 3
   _targetColor: {r: 1, g: 0, b: 0.09803922, a: 0.29411766}
 --- !u!1 &8984981084247503549
@@ -244,7 +245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8984981084247503549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9127748, y: 0, z: -10}
+  m_LocalPosition: {x: 1.9031055, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1015795426531675433}
@@ -342,12 +343,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 0.3
   m_LookaheadSmoothing: 3
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
+  m_TargetMovementOnly: 1
   m_ScreenX: 0.3
   m_ScreenY: 0.5
   m_CameraDistance: 10
